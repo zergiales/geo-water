@@ -1,5 +1,5 @@
 {
-  "name": "geo-water",
+  "name": "portafolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,19 +9,28 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "lottie-player-vue": "^0.0.16",
     "vue": "^2.6.14",
-    "vuetify": "^2.6.0"
+    "vue-router": "^3.5.1",
+    "vuelidate": "^0.7.7",
+    "vuetify": "^2.6.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@mdi/font": "^6.6.96",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/eslint-config-airbnb": "^6.0.0",
+    "deepmerge": "^4.2.2",
     "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-vue": "^8.0.3",
-    "sass": "~1.32.0",
-    "sass-loader": "^10.0.0",
+    "eslint-plugin-vuejs-accessibility": "^1.1.0",
+    "sass": "~1.32",
+    "sass-loader": "^10.2.1",
     "vue-cli-plugin-vuetify": "~2.4.8",
     "vue-template-compiler": "^2.6.14",
     "vuetify-loader": "^1.7.0"
@@ -33,7 +42,7 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "@vue/airbnb"
     ],
     "parserOptions": {
       "parser": "@babel/eslint-parser"
