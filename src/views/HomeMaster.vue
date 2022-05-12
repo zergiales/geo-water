@@ -1,6 +1,7 @@
 <!--lo organizamos todo en unaunica vista-->
 <template>
   <div>
+    <Register></Register>
     <MyLogin></MyLogin>
     <MyHeader></MyHeader>
     <v-container fluid>
@@ -13,6 +14,7 @@
   </div>
 </template>
 <script>
+import Register from '../components/Register.vue';
 import MyLogin from '../components/MyLogin.vue';
 import MyHeader from '../components/MyHeader.vue';
 import MyHome from '../components/MyHome.vue';
@@ -23,6 +25,7 @@ import MyFooter from '../components/MyFooter.vue';
 
 export default {
   components: {
+    Register,
     MyLogin,
     MyHeader,
     MyHome,
