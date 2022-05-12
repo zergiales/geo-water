@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import HomeMaster from '../views/HomeMaster.vue';
 
 Vue.use(VueRouter);
-
+// main component
 const routes = [
   {
     path: '/',

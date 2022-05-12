@@ -6,7 +6,13 @@
     font-family: defecto;
     transition: 1s;
 }
-
+/*login*/
+  .login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+  }
 /*barra de navegacion*/
 #header{
     height: 120px;
