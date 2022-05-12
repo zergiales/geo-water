@@ -52,7 +52,7 @@
                 required
               />
               <v-text-field
-                v-model="password"
+                v-model="passwordC"
                 :rules="passwordRules"
                 :type="passwordShow ? 'text' : 'password'"
                 label="Confrmar contraseña"
@@ -60,12 +60,6 @@
                 :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
                 @click:append="passwordShow = !passwordShow"
                 required
-              />
-            <v-text-field
-                v-model="imagen"
-                type="url"
-                label="Imagen"
-                placeholder="inserte un url para la imagen"
               />
             </v-card-text>
             <v-card-actions class="justify-center">
