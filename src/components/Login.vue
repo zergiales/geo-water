@@ -6,6 +6,7 @@
         <v-card class="pa-4">
           <div class="text-center">
             <v-avatar size="90" color="indigo lighten-4">
+              <!--to do: poner imagen-->
               <v-icon size="40" color="indigo">mdi-account</v-icon>
             </v-avatar>
             <h2 class="indigo--text">Bienvenido a Geo Water</h2>
@@ -33,6 +34,7 @@
                 required
               />
               <v-switch label="Recordar contraseña" color="indigo"></v-switch>
+              <v-btn @click="$router.push('/registro')">No tengo cuenta</v-btn>
             </v-card-text>
             <v-card-actions class="justify-center">
               <v-btn :loading="loading" type="submit" color="indigo">
