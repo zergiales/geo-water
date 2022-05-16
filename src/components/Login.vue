@@ -34,7 +34,9 @@
                 required
               />
               <v-switch label="Recordar contraseña" color="indigo"></v-switch>
-              <v-btn @click="$router.push('/registro')">No tengo cuenta</v-btn>
+              <p class="texto">¿No estas registrado aún?
+              <v-bind class="enlace" @click="$router.push('/registro')">Registrate</v-bind>
+              </p>
             </v-card-text>
             <v-card-actions class="justify-center">
               <v-btn :loading="loading" type="submit" color="indigo">
@@ -54,7 +56,6 @@
 <script>
 export default {
   name: 'App',
-
   data: () => ({
     loading: false,
     snackbar: false,
@@ -62,7 +63,7 @@ export default {
     email: '',
     emailRules: [
       (v) => !!v || 'Se necesita un correo valido',
-      (v) => /.+@.+\..+/.test(v) || 'acuerdate de escribirlo bien con @ y eso',
+      (v) => /.+@.+\..+/.test(v) || 'acuerdate de escribirlo bien con @gmail.com...',
     ],
     password: '',
     passwordRules: [
