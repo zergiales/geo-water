@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 09-05-2022 a las 06:36:33
--- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 7.4.23
+-- Servidor: localhost
+-- Tiempo de generación: 17-05-2022 a las 10:39:25
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,6 +39,22 @@ CREATE TABLE `baños` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `reseñas`
+--
+
+CREATE TABLE `reseñas` (
+  `id` int(8) NOT NULL,
+  `id_baño` int(8) NOT NULL,
+  `id_usuario` int(8) NOT NULL,
+  `titulo` varchar(30) NOT NULL,
+  `puntuacion` int(2) NOT NULL,
+  `fecha` date NOT NULL,
+  `descripcion` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `ubicacion`
 --
 
@@ -47,7 +63,7 @@ CREATE TABLE `ubicacion` (
   `latitud` int(11) NOT NULL,
   `coorX` int(11) NOT NULL,
   `coorY` int(11) NOT NULL,
-  `coorz` int(8) NOT NULL,
+  `coorZ` int(8) NOT NULL,
   `calle` varchar(60) NOT NULL,
   `pais` varchar(30) NOT NULL,
   `provincia` varchar(60) NOT NULL,
@@ -65,10 +81,11 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(60) NOT NULL,
   `apellido1` varchar(60) NOT NULL,
   `apellido2` varchar(60) NOT NULL,
-  `e-mail` varchar(30) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
   `contraseña` varchar(60) NOT NULL,
   `img` varchar(30) DEFAULT NULL,
-  `tipo` tinyint(1) NOT NULL
+  `tipo` tinyint(1) NOT NULL,
+  `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -82,6 +99,14 @@ ALTER TABLE `baños`
   ADD PRIMARY KEY (`id_baño`),
   ADD UNIQUE KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_ubicación` (`id_ubicación`);
+
+--
+-- Indices de la tabla `reseñas`
+--
+ALTER TABLE `reseñas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_baño` (`id_baño`);
 
 --
 -- Indices de la tabla `ubicacion`
@@ -106,6 +131,12 @@ ALTER TABLE `baños`
   MODIFY `id_baño` int(8) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `reseñas`
+--
+ALTER TABLE `reseñas`
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `ubicacion`
 --
 ALTER TABLE `ubicacion`
@@ -116,6 +147,24 @@ ALTER TABLE `ubicacion`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `baños`
+--
+ALTER TABLE `baños`
+  ADD CONSTRAINT `baños_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `baños_ibfk_2` FOREIGN KEY (`id_ubicación`) REFERENCES `ubicacion` (`id_ubicacion`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `reseñas`
+--
+ALTER TABLE `reseñas`
+  ADD CONSTRAINT `reseñas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `reseñas_ibfk_2` FOREIGN KEY (`id_baño`) REFERENCES `baños` (`id_baño`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
