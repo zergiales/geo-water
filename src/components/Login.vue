@@ -11,7 +11,7 @@
             </v-avatar>
             <h2 class="indigo--text">Bienvenido a Geo Water</h2>
           </div>
-          <v-form @submit.prevent="submitHandler" ref="form">
+          <v-form @submit.prevent="getUser" ref="form">
             <v-card-text>
               <v-text-field
                 v-model="email"
@@ -33,30 +33,56 @@
                 @click:append="passwordShow = !passwordShow"
                 required
               />
-              <v-switch label="Recordar contraseña" color="indigo"></v-switch>
-              <p class="texto">¿No estas registrado aún?
-              <v-bind class="enlace" @click="$router.push('/registro')">Registrate</v-bind>
-              </p>
+              <v-row class="texto d-flex">
+                <v-col cols="5" class="px-0">¿No estas registrado aún?</v-col>
+              <v-col class="enlace px-0" cols="4"
+              @click="$router.push('/registro')">Registrate</v-col>
+              </v-row>
             </v-card-text>
             <v-card-actions class="justify-center">
               <v-btn :loading="loading" type="submit" color="indigo">
-                <span class="white--text px-8">Iniciar sesión</span>
+                <span class="white--text px-8" >Iniciar sesión</span>
               </v-btn>
             </v-card-actions>
           </v-form>
         </v-card>
+    <v-dialog
+      v-model="dialog"
+      persistent
+      max-width="550"
+        transition="dialog-top-transition"
+    >
+      <v-card>
+        <v-card-title class="text-h5">
+          El usuario o la contraseña son erroneos
+        </v-card-title>
+        <v-card-text>Vuelve a insertar la contraseña o el usuario</v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="secondary"
+            text
+            @click="dialog = false"
+          >ok
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
       </v-col>
     </v-main>
     <v-snackbar top color="green" v-model="snackbar">
-      Login success
+      Bienvenido
     </v-snackbar>
   </v-app>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'App',
   data: () => ({
+    dialog: false,
     loading: false,
     snackbar: false,
     passwordShow: false,
@@ -75,12 +101,38 @@ export default {
     submitHandler() {
       if (this.$refs.form.validate()) {
         this.loading = true;
+        this.getUser();
         setTimeout(() => {
           this.loading = false;
           this.snackbar = true;
         }, 3000);
       }
     },
+    async getUser() {
+      const response = await axios.post(
+        'http://localhost:30/apis/api-geo-water/public/index.php/login',
+        {
+          email: this.email,
+          contraseña: this.password,
+        },
+      );
+      if (response.data.nombre) {
+        this.$router.push('/home');
+      } else {
+        this.dialog = true;
+        this.email = '';
+        this.password = '';
+      }
+    },
   },
 };
 </script>
+<style scooped>
+  .enlace{
+    cursor: pointer;
+    color: gray;
+  }
+  .enlace:hover{
+    text-decoration: underline;
+  }
+</style>

@@ -91,6 +91,7 @@ export default {
       (v) => /.+@.+\..+/.test(v) || 'acuerdate de escribirlo bien con @ y eso',
     ],
     password: '',
+    passwordC: '',
     passwordRules: [
       (v) => !!v || 'Se necesita una contraseña valida',
       (v) => (v && v.length >= 8) || 'la contraseña debe tener minimo 8 caracteres!',

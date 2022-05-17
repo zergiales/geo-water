@@ -13,13 +13,6 @@
       justify-content: center;
       flex-direction: column;
   }
-  .enlace{
-      cursor: pointer;
-      color: gray;
-  }
-  .enlace:hover{
-    text-decoration: underline;
-  }
   .texto{
       font-size: 15px;
       font-weight: 400;
