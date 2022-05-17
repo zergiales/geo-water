@@ -3,7 +3,7 @@
     <div class="login"></div>
     <v-main class="d-flex justify-center align-center">
       <v-col cols="10" lg="4" class="mx-auto">
-        <v-card class="pa-4">
+        <v-card class="pa-3">
           <div class="text-center">
             <v-avatar size="90" color="indigo lighten-4">
               <!--to do: poner imagen-->
@@ -109,8 +109,11 @@ export default {
       }
     },
     async getUser() {
+      // eslint-disable-next-line
+      debugger;
+      console.log(process.env.VUE_APP_SERVER_TOTAL_PATH);
       const response = await axios.post(
-        'http://localhost:30/apis/api-geo-water/public/index.php/login',
+        `${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`,
         {
           email: this.email,
           contraseña: this.password,
