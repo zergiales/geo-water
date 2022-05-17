@@ -6,93 +6,22 @@
     font-family: defecto;
     transition: 1s;
 }
-
-/*barra de navegacion*/
-#header{
-    height: 120px;
-    width: 100%;
-}
-#menu{
-    display: flex;
-    justify-content: center;}
-#menu a{
-    text-decoration: none;
-    font-weight: bold;
-   
-}
-/*main*/
-.titulillo{
-    color: cadetblue;
-}
-.texto{
-    font-size: 15px;
-    font-style: oblique;
-    text-align: start;
-}
-.texto2{
-    font-size: 18px;
-    font-weight: bold;
-}
-/*donde esta todo */
-.container{
-    background-color: #e5e5ef;
-}
-/*componente de MyHome*/
-.contenedor1{
-    margin-top: 3em;
-    background: linear-gradient(135deg, rgba(244,129,58,1) 0.5%, rgba(118,95,242,1) 60%, rgba(35,28,133,1) 99%);
-    height: 80%;
-    width: 90%;
-    border-radius: 5px;
-    text-align: justify;
-    padding: 2em;
-}
-.btnC:hover{
-    transition: 0.8s;
-    transform: translateY(5px);
-    box-shadow: 5px 5px 10px 1px rgba(117, 95, 242, 0.408);
-}
-/*MyProyects*/
-/*uso de clases reactivas*/
-.tarjeta:hover{
-    cursor: pointer;
-    transition: 0.5s;
-    transition-delay: 0.2s;
-    transform: scale(0.9);
-}
-.imagen{
-    height: 15em;
-}
-.iconitos{
-    margin-top: 40px;
-    height: 50px;
-    width: 8px;
-}
-/*About me*/
-.contenedor2{
-    padding: 150px;
-    background: linear-gradient(95deg, rgba(244, 129, 58, 1) 15%, rgba(118, 95, 242, 1) 70%);
-}
-/*ContactMe*/
-.contenedor3{
-    margin-top: 10px;
-    border: 5 px solid linear-gradient(95deg, rgba(244, 129, 58, 1) 15%, rgba(118, 95, 242, 1) 70%);
-    padding: 100px;
-    background: 
-    linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
-    linear-gradient(to right, darkblue, darkorchid) border-box;
-  border-radius: 50em;
-  border: 4px solid transparent;
-}
-.formulario{
-    height: 100%;
-    width: 100%;
-    padding: 50px;
-}
-.dos:hover{
-    transform: scale(1.4);
-}
-/*footer*/
-.subheading{
-    text-align: center;
-}
+/*login*/
+  .login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+  }
+  .enlace{
+      cursor: pointer;
+      color: gray;
+  }
+  .enlace:hover{
+    text-decoration: underline;
+  }
+  .texto{
+      font-size: 15px;
+      font-weight: 400;
+      color: gray;
+  }
