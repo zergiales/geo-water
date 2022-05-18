@@ -1,20 +1,26 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import HomeMaster from '../views/HomeMaster.vue';
+import Login from '../views/LoginView.vue';
 import Registro from '../views/RegistroView.vue';
+import Menu from '../views/HomeView.vue';
 
 Vue.use(VueRouter);
 // main component
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeMaster,
+    name: 'login',
+    component: Login,
   },
   {
     path: '/registro',
     name: 'register',
     component: Registro,
+  },
+  {
+    path: '/home',
+    name: 'menu',
+    component: Menu,
   },
 ];
 
