@@ -2,120 +2,248 @@
   <v-app>
     <div class="login"></div>
     <v-main class="d-flex justify-center align-center">
-      <v-col cols="10" lg="4" class="mx-auto">
+      <v-col cols="20" lg="4" class="mx-auto">
         <v-card class="pa-4">
           <div class="text-center">
             <h2 class="indigo--text">Registro de usuario</h2>
           </div>
-          <v-form @submit.prevent="submitHandler" ref="form">
+          <v-form @submit.prevent="registerUser" ref="form" method="post">
             <v-card-text>
                 <v-text-field
                 v-model="nombre"
-                :rules="nombreReglas"
-                type="text"
+                :counter="20"
                 label="Nombre"
                 placeholder="Juana"
                 required
+                @input="$v.nombre.$touch()"
+                :error-messages="mensajeNombre()"
               />
                 <v-text-field
                 v-model="apellido1"
-                :rules="apellidoReglas"
-                type="text"
+                :counter="20"
                 label="Apellido 1"
                 placeholder="De Arco"
                 required
+                @input="$v.apellido1.$touch()"
+                :error-messages="mensajeApellido1()"
               />
                 <v-text-field
                 v-model="apellido2"
-                :rules="apellidoReglas"
-                type="text"
+                :counter="20"
+                :class="{error1:$v.apellido2.$error }"
                 label="Apellido 2"
-                placeholder="sin Arco"
+                placeholder="De Arco"
                 required
+                @input="$v.apellido2.$touch()"
+                :error-messages="mensajeApellido2()"
               />
               <v-text-field
                 v-model="email"
-                :rules="emailRules"
-                type="email"
                 label="Inserte correo electronico"
                 placeholder="correo@gmail.com"
                 required
+                :error-messages="mensajeEmail()"
               />
               <v-text-field
                 v-model="password"
-                :rules="passwordRules"
                 :type="passwordShow ? 'text' : 'password'"
                 label="Inserte contraseña"
-                placeholder="Yogur1234"
+                placeholder="12345678"
                 :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
                 @click:append="passwordShow = !passwordShow"
                 required
+                :error-messages="mensajeContraseña()"
               />
               <v-text-field
                 v-model="passwordC"
-                :rules="passwordRules"
-                :type="passwordShow ? 'text' : 'password'"
+                :type="passwordShowC ? 'text' : 'password'"
                 label="Confrmar contraseña"
-                placeholder="1234"
-                :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
-                @click:append="passwordShow = !passwordShow"
+                placeholder="12345678"
+                :append-icon="passwordShowC ? 'mdi-eye' : 'mdi-eye-off'"
+                @click:append="passwordShowC = !passwordShowC"
                 required
+                :error-messages="mensajeContraseñaConf()"
               />
             </v-card-text>
             <v-card-actions class="justify-center">
-              <v-btn :loading="loading" type="submit" color="indigo">
-                <span class="white--text px-8">Crear usuario</span>
+              <v-btn :disabled="$v.$invalid" type="submit" color="indigo">
+                <span class="white--text px-4">Crear usuario</span>
+              </v-btn>
+              <v-btn  @click="clear()" color="indigo">
+                <span class="white--text px-4">Limpiar</span>
+              </v-btn>
+              <v-btn @click="$router.push('/')" color="indigo">
+                <span class="white--text px-4">Volver</span>
               </v-btn>
             </v-card-actions>
           </v-form>
         </v-card>
       </v-col>
     </v-main>
-    <v-snackbar top color="green" v-model="snackbar">
-      Login success
+        <v-dialog
+      v-model="dialog"
+      persistent
+      max-width="550"
+        transition="dialog-top-transition"
+    >
+      <v-card color="indigo">
+        <v-card-title class="text-h5 white--text">
+        Registro limpiado
+        </v-card-title>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn class="white--text"
+            text
+            @click="dialog = false">
+            Vale
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-snackbar top color="red" v-model="snackbar">
+      Registro incorrecto
     </v-snackbar>
   </v-app>
 </template>
 
 <script>
+import axios from 'axios';
+import { validationMixin } from 'vuelidate';
+import {
+  required, maxLength, minLength, email, alpha, sameAs,
+} from 'vuelidate/lib/validators';
+
 export default {
   name: 'App',
-
+  mixins: [validationMixin],
+  validations: {
+    nombre: {
+      required, maxLength: maxLength(20), alpha,
+    },
+    apellido1: {
+      required, maxLength: maxLength(20), alpha,
+    },
+    apellido2: {
+      required, maxLength: maxLength(20), alpha,
+    },
+    email: {
+      required, email, maxLength: maxLength(20),
+    },
+    password: { required, sameAs: sameAs('passwordC'), minLength: minLength(8) },
+    passwordC: { required, sameAs: sameAs('password'), minLength: minLength(8) },
+  },
   data: () => ({
     loading: false,
     snackbar: false,
+    dialog: false,
     passwordShow: false,
-    email: '',
-    emailRules: [
-      (v) => !!v || 'Se necesita un correo valido',
-      (v) => /.+@.+\..+/.test(v) || 'acuerdate de escribirlo bien con @ y eso',
-    ],
-    password: '',
-    passwordC: '',
-    passwordRules: [
-      (v) => !!v || 'Se necesita una contraseña valida',
-      (v) => (v && v.length >= 8) || 'la contraseña debe tener minimo 8 caracteres!',
-    ],
     nombre: '',
-    nombreReglas: [
-      (v) => !!v || 'inserte un nombre',
-      (v) => (v && v.length >= 1) || 'he dicho un nombre no una palabra',
-    ],
     apellido1: '',
     apellido2: '',
-    apellidoReglas: [
-      (v) => !!v || 'inserte un apellido',
-      (v) => (v && v.length >= 1) || 'he dicho un apellido no una palabra',
-    ],
+    email: '',
+    password: '',
+    passwordC: '',
+    passwordShowC: false,
   }),
   methods: {
-    submitHandler() {
-      if (this.$refs.form.validate()) {
-        this.loading = true;
-        setTimeout(() => {
-          this.loading = false;
+    clear() {
+      this.dialog = true;
+      this.nombre = '';
+      this.apellido1 = '';
+      this.apellido2 = '';
+      this.email = '';
+      this.password = '';
+      this.passwordC = '';
+    },
+    mensajeNombre() {
+      const mensaje = [];
+      if (!this.$v.nombre.alpha) {
+        mensaje.push('El campo solo admite caracteres alfabéticos');
+      } else if (!this.$v.nombre.required && this.$v.nombre.$dirty) {
+        mensaje.push('No has rellenado el campo');
+      } else if (!this.$v.nombre.maxLength) {
+        mensaje.push('has llegado al limite');
+      }
+      return mensaje;
+    },
+    mensajeApellido1() {
+      const mensaje = [];
+      if (!this.$v.apellido1.alpha) {
+        mensaje.push('El campo solo admite caracteres alfabéticos');
+      } else if (!this.$v.apellido1.required && this.$v.apellido1.$dirty) {
+        mensaje.push('No has rellenado el campo');
+      } else if (!this.$v.apellido1.maxLength) {
+        mensaje.push('has llegado al limite');
+      }
+      return mensaje;
+    },
+    mensajeApellido2() {
+      const mensaje = [];
+      if (!this.$v.apellido2.alpha) {
+        mensaje.push('El campo solo admite caracteres alfabéticos');
+      } else if (!this.$v.apellido2.required && this.$v.apellido2.$dirty) {
+        mensaje.push('No has rellenado el campo');
+      } else if (!this.$v.apellido2.maxLength) {
+        mensaje.push('has llegado al limite');
+      }
+      return mensaje;
+    },
+    mensajeEmail() {
+      const mensaje = [];
+      if (!this.$v.email.email) {
+        mensaje.push('el campo solo admite caracteres alfabeticos');
+      } else if (!this.$v.email.required && this.$v.email.$dirty) {
+        mensaje.push('rellena el campo');
+      }
+      return mensaje;
+    },
+    mensajeContraseña() {
+      const mensaje = [];
+      if (!this.$v.password.minLength) {
+        mensaje.push('Se necesita minimo 8 caracteres');
+      } else if (!this.$v.email.required && this.$v.email.$dirty) {
+        mensaje.push('Rellena el campo');
+      }
+      return mensaje;
+    },
+    mensajeContraseñaConf() {
+      const mensaje = [];
+      if (!this.$v.passwordC.minLength) {
+        mensaje.push('Se necesitan minimo 8 caracteres');
+      } else if (!this.$v.passwordC.required && this.$v.passwordC.$dirty) {
+        mensaje.push('Rellena el campo');
+      }
+      return mensaje;
+    },
+    // metodo para enviar los datos a servidor
+    async registerUser() {
+      // if para validar desde front los datos que vamos a mandar a la base de datos
+      if (!this.$v.$error) {
+        const response = await axios.post(
+          `${process.env.VUE_APP_SERVER_TOTAL_PATH}/register`,
+          {
+            nombre: this.nombre,
+            apellido1: this.apellido1,
+            apellido2: this.apellido2,
+            email: this.email,
+            contraseña: this.password,
+            contraseña2: this.passwordC,
+          },
+        );
+        console.log(response);
+        if (response.data.text) {
+          this.$router.push('/');
+        } else {
           this.snackbar = true;
-        }, 3000);
+          this.email = '';
+          this.password = '';
+          this.passwordC = '';
+        }
+      } else {
+        this.snackbar = true;
+        this.email = '';
+        this.password = '';
+        this.passwordC = '';
       }
     },
   },

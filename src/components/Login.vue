@@ -70,7 +70,7 @@
     </v-dialog>
       </v-col>
     </v-main>
-    <v-snackbar top color="green" v-model="snackbar">
+    <v-snackbar top color="green" v-model="snackbarLogin">
       Bienvenido
     </v-snackbar>
   </v-app>
@@ -84,7 +84,7 @@ export default {
   data: () => ({
     dialog: false,
     loading: false,
-    snackbar: false,
+    snackbarLogin: false,
     passwordShow: false,
     email: '',
     emailRules: [
@@ -109,14 +109,12 @@ export default {
       }
     },
     async getUser() {
-      // eslint-disable-next-line
-      debugger;
-      console.log(process.env.VUE_APP_SERVER_TOTAL_PATH);
       const response = await axios.post(
         `${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`,
         {
           email: this.email,
           contraseña: this.password,
+          snackbarLogin: true,
         },
       );
       if (response.data.nombre) {
