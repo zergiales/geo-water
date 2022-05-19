@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-05-2022 a las 10:39:25
+-- Tiempo de generación: 19-05-2022 a las 12:39:26
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -49,7 +49,7 @@ CREATE TABLE `reseñas` (
   `titulo` varchar(30) NOT NULL,
   `puntuacion` int(2) NOT NULL,
   `fecha` date NOT NULL,
-  `descripcion` varchar(30) NOT NULL
+  `descripcion` varchar(140) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -87,6 +87,19 @@ CREATE TABLE `usuarios` (
   `tipo` tinyint(1) NOT NULL,
   `activo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `apellido1`, `apellido2`, `email`, `contraseña`, `img`, `tipo`, `activo`) VALUES
+(2, 'POSTMAN', 'POSTMAN', 'POSTMAN', 'a@a.es', '123456789', 'public/upload/user_anon.png', 0, 0),
+(3, 'a', 'a', 'a', 'a@b.es', '123456789', 'public/upload/user_anon.png', 0, 0),
+(4, 'a', 'a', 'a', 'e@e.com', '11111111', 'public/upload/user_anon.png', 0, 0),
+(5, 'uno', 'dos', 'tres', 'cuatro@cuatro.es', '123456789', 'public/upload/user_anon.png', 0, 0),
+(6, 'A', 'A', 'A', 'AAA@A.ES', '12345678', 'public/upload/user_anon.png', 0, 0),
+(7, 'ww', 'www', 'ww', 'w@w.es', '12345678', 'public/upload/user_anon.png', 0, 0),
+(8, 'Sergio', 'Sanchez', 'Lopez', 'sergio@gmail.com', '12345678', 'public/upload/user_anon.png', 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -146,7 +159,7 @@ ALTER TABLE `ubicacion`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
