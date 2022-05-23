@@ -1,17 +1,19 @@
     <template>
-        <div id="map" ref="basicMapbox"></div>
+      <v-main>
+        <div  id="map" class="elevation-12 rounded-xl " ref="basicMapbox"></div>
+      </v-main>
     </template>
 <script>
+import {
+  MglMap,
+} from 'vue-mapbox';
 import mapboxgl from 'mapbox-gl';
+import MglGeocoderControl from 'vue-mapbox-geocoder';
 
 export default {
-  props: {
-    mapWidth: {
-      type: String,
-    },
-    mapHeight: {
-      type: String,
-    },
+  components: {
+    MglMap,
+    MglGeocoderControl,
   },
   data() {
     return {
@@ -26,18 +28,23 @@ export default {
       mapboxgl.accessToken = 'pk.eyJ1IjoiemVyZ2lhbGVzIiwiYSI6ImNsM2JwZmVxcTBkbDQzYnA0czd5bGJpNTgifQ.iK9cRRLuaeol1Vdm2W68_A';
       const map = new mapboxgl.Map({
         container: 'map',
-        center: [2.294481, 48.858372],
-        zoom: 15,
         style: 'mapbox://styles/zergiales/cl3bqhxaz000515jtbhj65ma3',
       });
       console.log(map);
+      // Add the control to the map.
+      map.addControl(
+        new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          mapboxgl,
+        }),
+      );
     },
   },
 };
 </script>
     <style>
-    #map{
-      width: 100%;
+    .mapboxgl-map{
+      width:57%;
       height:500px;
     }
     </style>

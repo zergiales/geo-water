@@ -2,18 +2,19 @@
   <v-app>
     <div class="login"></div>
     <v-main class="d-flex justify-center align-center">
-      <v-col cols="10" lg="4" class="mx-auto">
-        <v-card class="pa-3">
-          <div class="text-center">
+      <v-col cols="10" lg="4"  class="mx-auto">
+        <v-card class="pa-5 pt-5" width="850" height="700">
+          <div class=" pa-5 text-center">
             <v-avatar size="90" color="indigo lighten-4">
               <!--to do: poner imagen-->
               <v-icon size="40" color="indigo">mdi-account</v-icon>
             </v-avatar>
-            <h2 class="indigo--text">Bienvenido a Geo Water</h2>
+            <h2 class=" pt-10 indigo--text">Bienvenido a Geo Water</h2>
           </div>
           <v-form @submit.prevent="getUser" ref="form">
             <v-card-text>
               <v-text-field
+                class="pt-9"
                 v-model="email"
                 :rules="emailRules"
                 type="email"
@@ -23,6 +24,7 @@
                 required
               />
               <v-text-field
+                class="pt-9"
                 v-model="password"
                 :rules="passwordRules"
                 :type="passwordShow ? 'text' : 'password'"
@@ -33,13 +35,13 @@
                 @click:append="passwordShow = !passwordShow"
                 required
               />
-              <v-row class="texto d-flex">
-                <v-col cols="5" class="px-0">¿No estas registrado aún?</v-col>
-              <v-col class="enlace px-0" cols="4"
+              <v-row class="pt-12 pl-10 texto d-flex justify-center align-center">
+                <v-col cols="5" class="px-0 pl-10">¿No estas registrado aún?</v-col>
+              <v-col class="enlace px-1" cols="4"
               @click="$router.push('/registro')">Registrate</v-col>
               </v-row>
             </v-card-text>
-            <v-card-actions class="justify-center">
+            <v-card-actions class=" pt-12 justify-center">
               <v-btn :loading="loading" type="submit" color="indigo">
                 <span class="white--text px-8" >Iniciar sesión</span>
               </v-btn>
