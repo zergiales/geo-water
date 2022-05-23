@@ -6,11 +6,13 @@ import mapboxgl from 'mapbox-gl';
 
 export default {
   props: {
-    mapWidth: {
-      type: String,
+    latitud: {
+      type: Number,
+      default: 40.5238136,
     },
-    mapHeight: {
-      type: String,
+    longitud: {
+      type: Number,
+      default: -3.6593019,
     },
   },
   data() {
@@ -26,8 +28,8 @@ export default {
       mapboxgl.accessToken = 'pk.eyJ1IjoiemVyZ2lhbGVzIiwiYSI6ImNsM2JwZmVxcTBkbDQzYnA0czd5bGJpNTgifQ.iK9cRRLuaeol1Vdm2W68_A';
       const map = new mapboxgl.Map({
         container: 'map',
-        center: [2.294481, 48.858372],
-        zoom: 15,
+        center: [this.longitud, this.latitud],
+        zoom: 10,
         style: 'mapbox://styles/zergiales/cl3bqhxaz000515jtbhj65ma3',
       });
       console.log(map);

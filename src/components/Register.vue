@@ -65,9 +65,9 @@
                 :error-messages="mensajeContraseñaConf()"
               />
             </v-card-text>
-            <v-card-actions class="justify-center">
-              <v-btn :disabled="$v.$invalid" type="submit" color="indigo">
-                <span class="white--text px-4">Crear usuario</span>
+            <v-card-actions class="justify-center d-flex flex-wrap mb-15">
+              <v-btn :disabled="$v.$invalid" type="submit" color="indigo" class="mb-3">
+                <span class="white--text">Crear usuario</span>
               </v-btn>
               <v-btn  @click="clear()" color="indigo">
                 <span class="white--text px-4">Limpiar</span>
