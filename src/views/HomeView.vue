@@ -1,17 +1,22 @@
 <!--lo organizamos todo en unaunica vista-->
 <template>
   <div>
-    <v-container fluid>
-    <Mapa></Mapa>
+    <v-container>
+      <SideBar></SideBar>
+      <div fluid>
+        <MapaComponent></MapaComponent>
+      </div>
     </v-container>
   </div>
 </template>
 <script>
-import Mapa from '../components/MapaComponent.vue';
+import SideBar from '@/components/SideBar.vue';
+import MapaComponent from '@/components/MapaComponent.vue';
 
 export default {
   components: {
-    Mapa,
+    SideBar,
+    MapaComponent,
   },
 };
 </script>

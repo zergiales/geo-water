@@ -46,8 +46,7 @@ export default {
 </script>
     <style>
     .mapboxgl-map{
-      width:100vw;
-      height:100vh;
+      width:50%;
+      height:500px;
     }
-    @import url('https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css');
     </style>
