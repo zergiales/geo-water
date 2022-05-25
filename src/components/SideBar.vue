@@ -107,9 +107,9 @@ export default {
         },
         {
           link: '/Mis-baños',
-          name: 'Mis baños',
+          name: 'Baños',
           tooltip: 'Mis baños',
-          icon: 'bx-heart',
+          icon: 'bx-bath',
         },
         {
           link: '/Ajustes',
