@@ -6,14 +6,14 @@
   >
     <v-app-bar
       dark
-      color="pink">
-      <v-toolbar-title class="white--text">Notificaciones</v-toolbar-title>
+      color="indigo">
+      <v-toolbar-title class="white--text">Acceso rápido</v-toolbar-title>
     </v-app-bar>
     <v-container>
       <v-row dense>
         <v-col cols="12">
           <v-card
-            color="#385F73"
+            color="primaryLight"
             dark
           >
             <v-card-title class="text-h5">
