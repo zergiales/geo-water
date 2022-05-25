@@ -2,7 +2,7 @@
   <v-app>
     <div class="login"></div>
     <v-main class="d-flex justify-center align-center">
-      <v-col cols="10" lg="4"  class="mx-auto">
+      <v-col cols="10" lg="4" sm="4" md="4"  class="mx-auto">
         <v-card class="pa-5 pt-5" width="850" height="700">
           <div class=" pa-5 text-center">
             <v-avatar size="90" color="indigo lighten-4">

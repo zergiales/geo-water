@@ -1,105 +1,60 @@
 <template>
   <v-card
-    max-width="80%"
-    height="100%"
     class="mx-auto"
+    color="#26c6da"
+    dark
+    max-width="400"
   >
-    <v-app-bar
-      dark
-      color="pink">
-      <v-toolbar-title class="white--text">Notificaciones</v-toolbar-title>
-    </v-app-bar>
-    <v-container>
-      <v-row dense>
-        <v-col cols="12">
-          <v-card
-            color="#385F73"
-            dark
-          >
-            <v-card-title class="text-h5">
-              ¿Quieres añadir un baño?
-            </v-card-title>
-            <v-card-subtitle>Añade baños donde quieras</v-card-subtitle>
+    <v-card-title>
+      <v-icon
+        large
+        left
+      >
+        mdi-twitter
+      </v-icon>
+      <span class="text-h6 font-weight-light">Twitter</span>
+    </v-card-title>
 
-            <v-card-actions>
-              <v-btn text>
-                Agregar un baño
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-col>
+    <v-card-text class="text-h5 font-weight-bold">
+      "Cuando era pequeñito me cagaba en la fregona."
+    </v-card-text>
 
-        <v-col
-          v-for="(item, i) in items"
-          :key="i"
-          cols="12"
+    <v-card-actions>
+      <v-list-item class="grow">
+        <v-list-item-avatar color="grey darken-3">
+          <v-img
+            class="elevation-6"
+            alt=""
+            src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+          ></v-img>
+        </v-list-item-avatar>
+
+        <v-list-item-content>
+          <v-list-item-title>Evan You</v-list-item-title>
+        </v-list-item-content>
+
+        <v-row
+          align="center"
+          justify="end"
         >
-          <v-card
-            :color="item.color"
-            dark
-          >
-            <div class="d-flex flex-no-wrap justify-space-between">
-              <div>
-                <v-card-title
-                  class="text-h5"
-                  v-text="item.title"
-                ></v-card-title>
-
-                <v-card-subtitle v-text="item.artist"></v-card-subtitle>
-
-                <v-card-actions>
-                  <v-btn
-                    v-if="item.artist === 'Ellie Goulding'"
-                    class="ml-2 mt-3"
-                    fab
-                    icon
-                    height="40px"
-                    right
-                    width="40px"
-                  >
-                  </v-btn>
-
-                  <v-btn
-                    v-else
-                    class="ml-2 mt-5"
-                    outlined
-                    rounded
-                    small
-                  >
-                    Siguiente
-                  </v-btn>
-                </v-card-actions>
-              </div>
-
-              <v-avatar
-                class="ma-3"
-                size="125"
-                tile
-              >
-                <v-img :src="item.src"></v-img>
-              </v-avatar>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
-    </v-container>
+          <v-icon class="mr-1">
+            mdi-heart
+          </v-icon>
+          <span class="subheading mr-2">256</span>
+          <span class="mr-1">·</span>
+          <v-icon class="mr-1">
+            mdi-share-variant
+          </v-icon>
+          <span class="subheading">45</span>
+        </v-row>
+      </v-list-item>
+    </v-card-actions>
   </v-card>
 </template>
 <script>
 export default {
   data: () => ({
-    items: [
-      {
-        color: '#1F7087',
-        title: '¿No sabes donde hay un baño?',
-        artist: 'Nosotros te decimos donde',
-      },
-      {
-        color: '#952175',
-        title: 'Hacer una resña',
-        artist: 'cuenta al mundo lo que quieras',
-      },
-    ],
+    //
   }),
 };
 </script>

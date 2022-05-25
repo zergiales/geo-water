@@ -8,6 +8,11 @@
           <MapaComponent></MapaComponent>
         </v-col>
         <v-col cols="6">
+          <InfoComponent></InfoComponent>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="6">
           <ReseñasComponent></ReseñasComponent>
         </v-col>
       </v-row>
@@ -18,11 +23,13 @@
 import SideBar from '@/components/SideBar.vue';
 import MapaComponent from '@/components/MapaComponent.vue';
 import ReseñasComponent from '@/components/ReseñasComponent.vue';
+import InfoComponent from '@/components/InfoComponent.vue';
 
 export default {
   components: {
     SideBar,
     MapaComponent,
+    InfoComponent,
     ReseñasComponent,
   },
 };
