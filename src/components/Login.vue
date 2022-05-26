@@ -36,7 +36,8 @@
                 required
               />
               <v-row class="pt-12 pl-10 texto d-flex justify-center align-center">
-                <v-col cols="5" class="px-0 pl-10">¿No estas registrado aún?</v-col>
+                <v-col cols="5"
+                class="px-lg-1 pl-sm-5 pl-lg-10">¿No estas registrado aún?</v-col>
               <v-col class="enlace px-1" cols="4"
               @click="$router.push('/registro')">Registrate</v-col>
               </v-row>

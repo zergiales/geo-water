@@ -5,15 +5,15 @@
     <UserComponent></UserComponent>
     <v-container fluid>
       <v-row>
-        <v-col cols="6">
+        <v-col cols-lg="6" cols-md="12">
           <MapaComponent></MapaComponent>
         </v-col>
-        <v-col cols="6">
+        <v-col cols-lg="6" cols-md="12">
           <InfoComponent></InfoComponent>
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="6">
+        <v-col cols-lg="6" cols-md="12">
           <ReseñasComponent></ReseñasComponent>
         </v-col>
       </v-row>

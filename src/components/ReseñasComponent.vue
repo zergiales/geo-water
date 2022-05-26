@@ -1,21 +1,16 @@
 <template>
   <v-card
     class="mx-auto"
-    color="#26c6da"
+    color="indigo"
     dark
     max-width="400"
   >
     <v-card-title>
-      <v-icon
-        large
-        left
-      >
-        mdi-twitter
-      </v-icon>
-      <span class="text-h6 font-weight-light">Twitter</span>
+      <v-icon large left> mdi-toilet</v-icon>
+      <span class="text-h6">Reseñas</span>
     </v-card-title>
 
-    <v-card-text class="text-h5 font-weight-bold">
+    <v-card-text class="">
       "Cuando era pequeñito me cagaba en la fregona."
     </v-card-text>
 
@@ -23,14 +18,13 @@
       <v-list-item class="grow">
         <v-list-item-avatar color="grey darken-3">
           <v-img
-            class="elevation-6"
+            class=""
             alt=""
-            src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
           ></v-img>
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title>Evan You</v-list-item-title>
+          <v-list-item-title>Sergio Sanchez</v-list-item-title>
         </v-list-item-content>
 
         <v-row
