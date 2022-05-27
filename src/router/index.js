@@ -6,7 +6,7 @@ import Menu from '../views/HomeView.vue';
 import Reseñas from '../views/ReseñasView.vue';
 import Ajustes from '../views/AjustesView.vue';
 import Baños from '../views/BañosView.vue';
-import Usuarios from '../view/Usiarios.vue';
+import Usuarios from '../views/UserView.vue';
 
 Vue.use(VueRouter);
 // main component
@@ -36,7 +36,7 @@ const routes = [
     name: 'ajustes',
     component: Ajustes,
   },
-    {
+  {
     path: '/baños',
     name: 'baños',
     component: Baños,
