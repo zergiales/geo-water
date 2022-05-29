@@ -27,7 +27,7 @@
 <script>
 import SideBar from '@/components/SideBar.vue';
 import MapaComponent from '@/components/MapaComponent.vue';
-import ReseñasComponent from '@/components/ReseñasComponent.vue';
+import ReseñasComponent from '@/components/ReseniasComponent.vue';
 import InfoComponent from '@/components/InfoComponent.vue';
 import UserComponent from '@/components/UserComponent.vue';
 

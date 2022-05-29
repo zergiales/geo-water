@@ -4,15 +4,12 @@
     <v-container grid-list-xs>
       <v-row>
         <v-col cols="6" class="text-center fade-scroll d-flex justify-center">
-                  <div>
-            <lottie-player
-              class="animation-reverse"
-              src="https://assets7.lottiefiles.com/packages/lf20_ifeouky0.json"
-              background="transparent"
-              speed="0.75"
-              style="width: 100%; height: 100%"
-              autoplay
-            ></lottie-player>
+          <div>
+            Si eres Usuario admin, podras entrar a modificar las funcionalidades
+            de los usuarios,vas poder pasar la actividad de los uausrios de activo a inactivo
+            <!--to do:
+            Hacer un primer contenedor donde salga una animacion de lottier, -->
+
           </div>
         </v-col>
       </v-row>

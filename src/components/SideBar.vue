@@ -100,9 +100,9 @@ export default {
           icon: 'bx-user',
         },
         {
-          link: '/Reseñas',
-          name: 'Reseñas',
-          tooltip: 'Reseñas',
+          link: '/resenias',
+          name: 'reseñas',
+          tooltip: 'resenias',
           icon: 'bx-chat',
         },
         {
