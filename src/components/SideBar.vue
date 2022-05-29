@@ -106,9 +106,9 @@ export default {
           icon: 'bx-chat',
         },
         {
-          link: '/Mis-baños',
-          name: 'Baños',
-          tooltip: 'Mis baños',
+          link: '/baños',
+          name: 'baños',
+          tooltip: 'baños',
           icon: 'bx-bath',
         },
         {

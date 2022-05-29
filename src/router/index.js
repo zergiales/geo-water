@@ -5,8 +5,8 @@ import Registro from '../views/RegistroView.vue';
 import Menu from '../views/HomeView.vue';
 import Reseñas from '../views/ReseñasView.vue';
 import Ajustes from '../views/AjustesView.vue';
-import Baños from '../views/BañosView.vue';
-import Usuarios from '../views/UserView.vue';
+import baños from '../views/BañosView.vue';
+import Usuario from '../views/UserView.vue';
 
 Vue.use(VueRouter);
 // main component
@@ -39,12 +39,12 @@ const routes = [
   {
     path: '/baños',
     name: 'baños',
-    component: Baños,
+    component: baños,
   },
   {
-    path: '/usuarios',
-    name: 'usuarios',
-    component: Usuarios,
+    path: '/usuario',
+    name: 'usuario',
+    component: Usuario,
   },
 ];
 

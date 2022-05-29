@@ -2,7 +2,11 @@
 <template>
   <div>
     <SideBar></SideBar>
-    <UserComponent></UserComponent>
+    <v-row>
+      <v-col cols="12">
+        <UserComponent></UserComponent>
+      </v-col>
+    </v-row>
     <v-container fluid>
       <v-row>
         <v-col cols-lg="6" cols-md="12">
