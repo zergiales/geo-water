@@ -1,10 +1,8 @@
 <!--lo organizamos todo en unaunica vista-->
 <template>
-  <div>
     <v-container>
-    <MyLogin></MyLogin>
+      <MyLogin></MyLogin>
     </v-container>
-  </div>
 </template>
 <script>
 import MyLogin from '../components/Login.vue';
@@ -15,12 +13,10 @@ export default {
   },
 };
 </script>
-<style>
+<style scooped>
 @import '../assets/css/style.css';
 
 .fondo{
-  background-image: url(../assets/img/fondos/fondo.png);
-  background-size: cover;
+    background-color: rgb(239, 238, 238);
 }
-
 </style>

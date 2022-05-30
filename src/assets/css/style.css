@@ -7,12 +7,6 @@
   transition: 1s;
 }
 /*login*/
-.login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
 .texto {
   font-size: 15px;
   font-weight: 400;
@@ -46,7 +40,7 @@
 /*animacion de las tarjetas*/
 /*tarjetas de los pases*/
 .cont {
-  background-color: #5a3fc0;
+  background-color: #3F51B5;
   margin: 10% auto;
   height: 200px;
   width: 350px;
@@ -87,7 +81,7 @@
   transition: all 1s;
 }
 .cont:hover .box {
-  background:#5c48cd70;
+  background:#7388ffba;
   transform: rotate(5deg);
 }
 .cont:hover {
@@ -109,25 +103,6 @@
 
 .txt3 {
   margin: 7px;
-}
-
-.read {
-  background: white;
-  border-radius: 2px;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 0.75s;
-  margin: 10px auto;
-  padding: 5px;
-  width: 100px;
-}
-
-.read:hover {
-  background-color: lightblue;
-  color: black;
 }
 
 .cont:hover .back {

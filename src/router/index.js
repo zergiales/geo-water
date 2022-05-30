@@ -7,6 +7,8 @@ import resenias from '../views/ReseniasView.vue';
 import Ajustes from '../views/AjustesView.vue';
 import baños from '../views/BañosView.vue';
 import Usuario from '../views/UserView.vue';
+import FormularioRes from '../views/FormularioRes.vue';
+import MisReseñas from '../views/MisReseñas.vue';
 
 Vue.use(VueRouter);
 // main component
@@ -32,13 +34,23 @@ const routes = [
     component: resenias,
   },
   {
+    path: '/resenias/FormularioRes',
+    name: 'FormularioRes',
+    component: FormularioRes,
+  },
+  {
+    path: '/resenias/MisResenias',
+    name: 'MisResenias',
+    component: MisReseñas,
+  },
+  {
     path: '/ajustes',
     name: 'ajustes',
     component: Ajustes,
   },
   {
-    path: '/baños',
-    name: 'baños',
+    path: '/banios',
+    name: 'banios',
     component: baños,
   },
   {

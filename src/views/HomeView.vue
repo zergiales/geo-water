@@ -16,21 +16,15 @@
           <InfoComponent></InfoComponent>
         </v-col>
       </v-row>
-      <v-row>
-        <v-col cols-lg="6" cols-md="12">
-          <ReseñasComponent></ReseñasComponent>
-        </v-col>
-      </v-row>
-    </v-container>
-    <footer>
+    <footer class="pt-9">
       <FooterComponent></FooterComponent>
     </footer>
+    </v-container>
   </div>
 </template>
 <script>
 import SideBar from '@/components/SideBar.vue';
 import MapaComponent from '@/components/MapaComponent.vue';
-import ReseñasComponent from '@/components/ReseniasComponent.vue';
 import InfoComponent from '@/components/InfoComponent.vue';
 import UserComponent from '@/components/UserComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
@@ -40,7 +34,6 @@ export default {
     SideBar,
     MapaComponent,
     InfoComponent,
-    ReseñasComponent,
     UserComponent,
     FooterComponent,
   },

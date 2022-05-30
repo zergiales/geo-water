@@ -10,13 +10,13 @@
               style="width: 100%; height: 100%" autoplay></lottie-player>
           </div>
         </v-col>
-        <v-cols cols="12" lg="6" md="6"
+        <v-col cols="12" lg="6" md="6"
         class="text-center fade-scroll d-flex justify-center align-center">
           <div class="titulo">
             <h1>Reseñas</h1>
             <h2>Aquí podrás publicar y ver tus reseñas</h2>
           </div>
-        </v-cols>
+        </v-col>
       </v-row>
       <v-row>
         <v-col cols="12" lg="6" xl="6" class="align-center justify-content-center white--text">
@@ -31,7 +31,9 @@
                 <div class="txt3">
                   Mira que puntuacion te pone el resto de personas
                 </div>
-                <v-btn>Siguiente</v-btn>
+              <v-btn @click="$router.push('/resenias/MisResenias')" color="green">
+                <span class="white--text px-4">Echale un ojo</span>
+              </v-btn>
               </div>
             </div>
           </div>
@@ -48,7 +50,9 @@
                 <div class="txt3">
                   Ayuda a la comunidad a crecer
                 </div>
-                <v-btn>Siguiente</v-btn>
+              <v-btn @click="$router.push('/resenias/FormularioRes')" color="green">
+                <span class="white--text px-4">Soy un criticon</span>
+              </v-btn>
               </div>
             </div>
           </div>
