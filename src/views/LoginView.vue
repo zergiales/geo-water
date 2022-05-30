@@ -1,6 +1,6 @@
 <!--lo organizamos todo en unaunica vista-->
 <template>
-    <v-container>
+    <v-container >
       <MyLogin></MyLogin>
     </v-container>
 </template>
@@ -16,7 +16,9 @@ export default {
 <style scooped>
 @import '../assets/css/style.css';
 
-.fondo{
-    background-color: rgb(239, 238, 238);
-}
+/*.fondo{
+    background-color:#e1e1e1;
+    height: 100%;
+    width: 100%;
+}*/
 </style>
