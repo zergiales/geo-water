@@ -1,7 +1,7 @@
 <!--lo organizamos todo en unaunica vista-->
 <template>
   <div>
-    <v-container fluid>
+    <v-container>
     <MyLogin></MyLogin>
     </v-container>
   </div>
@@ -15,4 +15,12 @@ export default {
   },
 };
 </script>
-<style>@import '../assets/css/style.css';</style>
+<style>
+@import '../assets/css/style.css';
+
+.fondo{
+  background-image: url(../assets/img/fondos/fondo.png);
+  background-size: cover;
+}
+
+</style>

@@ -22,6 +22,9 @@
         </v-col>
       </v-row>
     </v-container>
+    <footer>
+      <FooterComponent></FooterComponent>
+    </footer>
   </div>
 </template>
 <script>
@@ -30,6 +33,7 @@ import MapaComponent from '@/components/MapaComponent.vue';
 import ReseñasComponent from '@/components/ReseniasComponent.vue';
 import InfoComponent from '@/components/InfoComponent.vue';
 import UserComponent from '@/components/UserComponent.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
 
 export default {
   components: {
@@ -38,6 +42,7 @@ export default {
     InfoComponent,
     ReseñasComponent,
     UserComponent,
+    FooterComponent,
   },
 };
 </script>
