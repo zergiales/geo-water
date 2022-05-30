@@ -49,8 +49,9 @@
         </v-dialog>
       </v-col>
     </v-main>
-    <v-snackbar top color="green" v-model="snackbarLogin">
-      Bienvenido
+    <v-snackbar top color="green" v-model="snackbarLogin"
+    width="500" height="100" class="text--center">
+      <strong>Bienvenido a Geo Water</strong>
     </v-snackbar>
   </v-app>
 </template>
@@ -77,27 +78,22 @@ export default {
     ],
   }),
   methods: {
-    submitHandler() {
-      if (this.$refs.form.validate()) {
-        this.loading = true;
-        this.getUser();
-        setTimeout(() => {
-          this.loading = true;
-          this.snackbar = true;
-        }, 3000);
-      }
-    },
     async getUser() {
       const response = await axios.post(
         `${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`,
         {
           email: this.email,
           contraseña: this.password,
-          snackbarLogin: true,
         },
       );
       if (response.data.nombre) {
-        this.$router.push('/home');
+        setTimeout(() => {
+          this.snackbarLogin = true;
+          this.loading = true;
+        }, 1000);
+        setTimeout(() => {
+          this.$router.push('/home');
+        }, 3000);
       } else {
         this.dialog = true;
         this.email = '';

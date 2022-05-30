@@ -50,7 +50,7 @@ const routes = [
   },
   {
     path: '/banios',
-    name: 'banios',
+    name: 'baños',
     component: baños,
   },
   {

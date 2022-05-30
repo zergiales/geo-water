@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-main>
     <SideBar></SideBar>
     <v-container grid-list-xs>
       <v-row>
@@ -77,7 +77,7 @@
       <FooterComponent></FooterComponent>
     </footer>
     </v-container>
-  </div>
+  </v-main>
 </template>
 <script>
 import ReseniasComponent from '@/components/ReseniasComponent.vue';
@@ -96,3 +96,6 @@ export default {
   }),
 };
 </script>
+<style scoped>
+@import '../assets/css/style.css';
+</style>

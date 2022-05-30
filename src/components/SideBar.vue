@@ -106,7 +106,7 @@ export default {
           icon: 'bx-chat',
         },
         {
-          link: '/baños',
+          link: '/banios',
           name: 'baños',
           tooltip: 'baños',
           icon: 'bx-bath',
