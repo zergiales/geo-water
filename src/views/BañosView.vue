@@ -5,9 +5,10 @@
       <v-row>
         <v-col cols="12" lg="6" md="6" class="text-center fade-scroll d-flex justify-center">
           <div>
-            <lottie-player class="animation-reverse" src="https://assets5.lottiefiles.com/packages/lf20_kjnwk4pv.json"
+            <lottie-player class="animation-reversetext-center fade-scroll d-flex justify-center"
+            src="https://assets5.lottiefiles.com/packages/lf20_kjnwk4pv.json"
               background="transparent" speed="0.5"
-              style="width: 100%; height: 100%" loop autoplay></lottie-player>
+              style="width: 90%; height: 90%" loop autoplay></lottie-player>
           </div>
         </v-col>
         <v-col cols="12" lg="6" md="6"

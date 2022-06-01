@@ -1,15 +1,25 @@
 <template>
   <div>
     <SideBar></SideBar>
+    <v-row>
+      <v-col cols="12">
+        <UserComponent></UserComponent>
+      </v-col>
+    </v-row>
     <v-container grid-list-xs>
       <v-row>
-        <v-col cols="6" class="text-center fade-scroll d-flex justify-center">
+        <v-col cols="12" lg="6" md="6" class="text-center fade-scroll d-flex justify-center">
           <div>
-            Si eres Usuario admin, podras entrar a modificar las funcionalidades
-            de los usuarios,vas poder pasar la actividad de los uausrios de activo a inactivo
-            <!--to do:
-            Hacer un primer contenedor donde salga una animacion de lottier, -->
-
+            <lottie-player class="animation-reverse text-center fade-scroll d-flex justify-center" src="https://assets2.lottiefiles.com/packages/lf20_ab0pxvgc.json"
+              background="transparent" speed="0.75"
+              style="width: 500px; height: 100%" autoplay loop></lottie-player>
+          </div>
+        </v-col>
+        <v-col cols="12" lg="6" md="6"
+        class="text-center fade-scroll d-flex justify-center align-center">
+          <div class="titulo">
+            <h1>usuarios</h1>
+            <h2>Aquí podrás gestionar opciones de usuario</h2>
           </div>
         </v-col>
       </v-row>
@@ -18,10 +28,12 @@
 </template>
 <script>
 import SideBar from '@/components/SideBar.vue';
+import UserComponent from '@/components/UserComponent.vue';
 
 export default {
   components: {
     SideBar,
+    UserComponent,
   },
 };
 </script>

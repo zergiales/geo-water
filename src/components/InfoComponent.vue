@@ -27,17 +27,17 @@ export default {
     items: [
       {
         color: '#64AEFF',
-        title: 'Baños visitados',
+        title: 'Baños localizados',
         number: '3',
       },
       {
         color: '#6488FF',
-        title: 'Baños insertados',
+        title: 'Reseñas insertados',
         number: '5',
       },
       {
         color: '#2E3A82',
-        title: 'Reseñas realizadas',
+        title: 'Usuarios registrados',
         number: '3',
       },
     ],

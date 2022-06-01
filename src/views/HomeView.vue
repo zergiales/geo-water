@@ -16,6 +16,12 @@
           <InfoComponent></InfoComponent>
         </v-col>
       </v-row>
+      <v-row>
+        <v-col cols="12">
+          <h1>Baños cerca de ti </h1>
+            <TarjetasComponent></TarjetasComponent>
+        </v-col>
+      </v-row>
     <footer class="pt-9">
       <FooterComponent></FooterComponent>
     </footer>
@@ -28,6 +34,7 @@ import MapaComponent from '@/components/MapaComponent.vue';
 import InfoComponent from '@/components/InfoComponent.vue';
 import UserComponent from '@/components/UserComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
+import TarjetasComponent from '@/components/TarjetasComponent.vue';
 
 export default {
   components: {
@@ -35,6 +42,7 @@ export default {
     MapaComponent,
     InfoComponent,
     UserComponent,
+    TarjetasComponent,
     FooterComponent,
   },
 };

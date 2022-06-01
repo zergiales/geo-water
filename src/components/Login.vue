@@ -86,6 +86,7 @@ export default {
           contraseña: this.password,
         },
       );
+      console.log(process.env.VUE_APP_SERVER_TOTAL_PATH);
       if (response.data.nombre) {
         setTimeout(() => {
           this.snackbarLogin = true;
