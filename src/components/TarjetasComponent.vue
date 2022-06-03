@@ -2,7 +2,7 @@
   <v-row dense>
     <v-col v-for="item in items" :key="item" cols="4">
       <v-card class="mx-auto" max-width="344">
-        <v-img :src="require(`${item.imagen}`)" :name="item.descripcion" height="200px"></v-img>
+        <v-img :src="item.imagen" :name="item.descripcion" height="200px"></v-img>
         <v-card-title v-text="item.title"></v-card-title>
         <v-card-subtitle v-text="item.distancia"></v-card-subtitle>
         <v-card-actions>
@@ -31,21 +31,21 @@ export default {
     items: [
       {
         imagen: '@/assets/img/fondos/barajas.jpg',
-        title: 'Baño Aeropuerto Madrid-Barajas',
-        distancia: '50 km cerca de ti',
-        descripcion: 'especial para minusvalidos',
-      },
-      {
-        imagen: '@/assets/img/fondos/barajas.jpg',
-        title: 'Baño Aeropuerto Madrid-Barajas',
+        title: 'Baño Alameda Salud',
         distancia: '20 km cerca de ti',
         descripcion: 'especial para minusvalidos',
       },
       {
         imagen: '@/assets/img/fondos/barajas.jpg',
-        title: 'Baño Aeropuerto Madrid-Barajas',
-        distancia: '50 km cerca de ti',
-        descripcion: 'especial para minusvalidos',
+        title: 'Baño parque quebradilla',
+        distancia: '790 m cerca de ti',
+        descripcion: 'cerrado a las 12',
+      },
+      {
+        imagen: '@/assets/img/fondos/barajas.jpg',
+        title: 'Baño biblioteca',
+        distancia: '5 km cerca de ti',
+        descripcion: 'perfecto',
       },
     ],
   }),
