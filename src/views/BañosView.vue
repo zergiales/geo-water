@@ -19,16 +19,27 @@
           </div>
         </v-col>
       </v-row>
+      <v-row class="fondoBaño">
+        <v-col cols="6">
+          <RegistrarBanio></RegistrarBanio>
+        </v-col>
+        <v-cols></v-cols>
+      </v-row>
     </v-container>
   </div>
 </template>
 <script>
 import SideBar from '@/components/SideBar.vue';
+import RegistrarBanio from '@/components/RegistrarBanio.vue';
 
 export default {
   components: {
     SideBar,
+    RegistrarBanio,
   },
 };
 </script>
-<style>@import '../assets/css/style.css';</style>
+<style>
+  @import '../assets/css/style.css';
+  @import '../assets/css/baños.css';
+</style>

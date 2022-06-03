@@ -60,11 +60,11 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <h1>Reseñas de baños de tu alrededor</h1>
+          <h1>Tus últimas reseñas</h1>
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="3">
+        <v-col cols="4">
           <ReseniasComponent></ReseniasComponent>
         </v-col>
       </v-row>
@@ -91,6 +91,7 @@ export default {
     FooterComponent,
   },
   data: () => ({
+    /* reglas del text area */
     rules: [(v) => v.length <= 140 || 'Maximo 140 caracteres'],
     value: 'Informa a los usuarios sobre tu experiencia',
   }),

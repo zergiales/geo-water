@@ -1,10 +1,5 @@
 <template>
-  <v-card
-    class="mx-auto"
-    color="indigo"
-    dark
-    max-width="400"
-  >
+  <v-card class="mx-auto tweet" color="indigo" dark>
     <v-card-title>
       <v-icon large left> mdi-toilet</v-icon>
       <span class="text-h6">Reseñas</span>
@@ -48,7 +43,18 @@
 <script>
 export default {
   data: () => ({
-    //
+    reseña: [
+      {
+        titulo: 'Baño de la Concordia',
+        descripcion: 'Un baño con muchas agujas',
+        autor: 'Sergio Sanchez',
+      },
+    ],
   }),
 };
 </script>
+<style scoped>
+  .tweet{
+    width: 100%;
+  }
+</style>

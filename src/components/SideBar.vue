@@ -125,39 +125,10 @@ export default {
         },
       ],
     },
-
-    //! Search
-    isSearch: {
-      type: Boolean,
-      default: true,
-    },
-    searchPlaceholder: {
-      type: String,
-      default: 'Encuentra tu baño...',
-    },
-    searchTooltip: {
-      type: String,
-      default: 'Search',
-    },
-
-    //! Profile detailes
-    profileImg: {
-      type: String,
-      // default: require('../assets/img/photo.jpg'),
-    },
-    profileName: {
-      type: String,
-      default: 'Fayzullo Saidakbarov',
-    },
-    profileRole: {
-      type: String,
-      default: 'Frontend vue developer',
-    },
     isExitButton: {
       type: Boolean,
       default: true,
     },
-
     //! Styles
     bgColor: {
       type: String,
