@@ -13,56 +13,50 @@
                   v-model="nombre"
                   :counter="20"
                   label="Nombre"
-                  placeholder="azuqueca"
+                  placeholder="Nombre del baño"
                   required
                   @input="$v.nombre.$touch()"
                   :error-messages="mensajeNombre()"
                 />
                 <v-text-field
-                  v-model="apellido1"
+                  v-model="pais"
                   :counter="20"
-                  label="Apellido 1"
-                  placeholder="De Arco"
+                  label="Pais"
+                  placeholder="España"
                   required
                   @input="$v.apellido1.$touch()"
                   :error-messages="mensajeApellido1()"
                 />
                 <v-text-field
-                  v-model="apellido2"
+                  v-model="provincia"
                   :counter="20"
                   :class="{ error1: $v.apellido2.$error }"
-                  label="Apellido 2"
-                  placeholder="De Arco"
+                  label="Provincia"
+                  placeholder="Guadalajara"
                   required
                   @input="$v.apellido2.$touch()"
                   :error-messages="mensajeApellido2()"
                 />
                 <v-text-field
-                  v-model="email"
-                  label="Inserte correo electronico"
-                  placeholder="correo@gmail.com"
+                  v-model="cp"
+                  label="Código postal"
+                  placeholder="123456"
                   required
                   :error-messages="mensajeEmail()"
                 />
                 <v-text-field
-                  v-model="password"
-                  :type="passwordShow ? 'text' : 'password'"
-                  label="Inserte contraseña"
-                  placeholder="12345678"
-                  :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
-                  @click:append="passwordShow = !passwordShow"
+                  v-model="ciudad"
+                  label="Ciudad"
+                  placeholder="Valdeaveruelo"
                   required
-                  :error-messages="mensajeContraseña()"
+                  :error-messages="mensajeEmail()"
                 />
                 <v-text-field
-                  v-model="passwordC"
-                  :type="passwordShowC ? 'text' : 'password'"
-                  label="Confrmar contraseña"
-                  placeholder="12345678"
-                  :append-icon="passwordShowC ? 'mdi-eye' : 'mdi-eye-off'"
-                  @click:append="passwordShowC = !passwordShowC"
+                  v-model="calle"
+                  label="Calle o Avenida o centro donde se encuentra"
+                  placeholder="calle sin nombre ,11"
                   required
-                  :error-messages="mensajeContraseñaConf()"
+                  :error-messages="mensajeEmail()"
                 />
               </v-card-text>
               <v-card-actions class="justify-center d-flex flex-wrap mb-15">
@@ -72,7 +66,7 @@
                   color="indigo"
                   class="mb-3 mt-3"
                 >
-                  <span class="white--text">Crear usuario</span>
+                  <span class="white--text">Insertar baño</span>
                 </v-btn>
                 <v-btn @click="clear()" color="indigo">
                   <span class="white--text px-4">Limpiar</span>

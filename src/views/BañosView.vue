@@ -20,7 +20,7 @@
         </v-col>
       </v-row>
       <v-row class="fondoBaño">
-        <v-col cols="6">
+        <v-col cols="12">
           <RegistrarBanio></RegistrarBanio>
         </v-col>
         <v-cols></v-cols>
