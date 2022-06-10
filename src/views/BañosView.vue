@@ -25,17 +25,22 @@
         </v-col>
         <v-cols></v-cols>
       </v-row>
+      <footer class="pt-9">
+      <FooterComponent></FooterComponent>
+    </footer>
     </v-container>
   </div>
 </template>
 <script>
 import SideBar from '@/components/SideBar.vue';
 import RegistrarBanio from '@/components/RegistrarBanio.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
 
 export default {
   components: {
     SideBar,
     RegistrarBanio,
+    FooterComponent,
   },
 };
 </script>
