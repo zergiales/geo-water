@@ -24,39 +24,42 @@
                   label="Pais"
                   placeholder="España"
                   required
-                  @input="$v.apellido1.$touch()"
-                  :error-messages="mensajeApellido1()"
+                  @input="$v.pais.$touch()"
+                  :error-messages="mensajePais()"
                 />
                 <v-text-field
                   v-model="provincia"
                   :counter="20"
-                  :class="{ error1: $v.apellido2.$error }"
                   label="Provincia"
                   placeholder="Guadalajara"
                   required
-                  @input="$v.apellido2.$touch()"
-                  :error-messages="mensajeApellido2()"
+                  @input="$v.provincia.$touch()"
+                  :error-messages="mensajeProvincia()"
                 />
                 <v-text-field
                   v-model="cp"
                   label="Código postal"
                   placeholder="123456"
+                  :counter="5"
                   required
-                  :error-messages="mensajeEmail()"
+                  @input="$v.cp.$touch()"
+                  :error-messages="mensajeCp()"
                 />
                 <v-text-field
                   v-model="ciudad"
                   label="Ciudad"
                   placeholder="Valdeaveruelo"
                   required
-                  :error-messages="mensajeEmail()"
+                  @input="$v.ciudad.$touch()"
+                  :error-messages="mensajeCiudad()"
                 />
                 <v-text-field
                   v-model="calle"
                   label="Calle o Avenida o centro donde se encuentra"
                   placeholder="calle sin nombre ,11"
                   required
-                  :error-messages="mensajeEmail()"
+                  @input="$v.calle.$touch()"
+                  :error-messages="mensajeCalle()"
                 />
               </v-card-text>
               <v-card-actions class="justify-center d-flex flex-wrap mb-15">
@@ -108,10 +111,8 @@ import { validationMixin } from 'vuelidate';
 import {
   required,
   maxLength,
-  minLength,
-  email,
+  numeric,
   alpha,
-  sameAs,
 } from 'vuelidate/lib/validators';
 
 export default {
@@ -123,30 +124,32 @@ export default {
       maxLength: maxLength(20),
       alpha,
     },
-    apellido1: {
+    pais: {
+      /* republica checa (ejemplo de un pais de mas de 10 de longitud) */
       required,
       maxLength: maxLength(20),
       alpha,
     },
-    apellido2: {
+    provincia: {
       required,
       maxLength: maxLength(20),
       alpha,
     },
-    email: {
+    cp: {
       required,
-      email,
+      numeric,
+      maxLength: maxLength(5),
+      /* se limita porque los codigos postales son de 5 digitos */
+    },
+    ciudad: {
+      required,
       maxLength: maxLength(20),
+      alpha,
     },
-    password: {
+    calle: {
       required,
-      sameAs: sameAs('passwordC'),
-      minLength: minLength(8),
-    },
-    passwordC: {
-      required,
-      sameAs: sameAs('password'),
-      minLength: minLength(8),
+      maxLength: maxLength(20),
+      alpha,
     },
   },
   data: () => ({
@@ -155,22 +158,21 @@ export default {
     dialog: false,
     passwordShow: false,
     nombre: '',
-    apellido1: '',
-    apellido2: '',
-    email: '',
-    password: '',
-    passwordC: '',
-    passwordShowC: false,
+    pais: '',
+    provincia: '',
+    cp: '',
+    ciudad: '',
+    calle: '',
   }),
   methods: {
     clear() {
       this.dialog = true;
       this.nombre = '';
-      this.apellido1 = '';
-      this.apellido2 = '';
-      this.email = '';
-      this.password = '';
-      this.passwordC = '';
+      this.pais = '';
+      this.provincia = '';
+      this.cp = '';
+      this.ciudad = '';
+      this.calle = '';
     },
     mensajeNombre() {
       const mensaje = [];
@@ -183,52 +185,58 @@ export default {
       }
       return mensaje;
     },
-    mensajeApellido1() {
+    mensajePais() {
       const mensaje = [];
-      if (!this.$v.apellido1.alpha) {
+      if (!this.$v.pais.alpha) {
         mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.apellido1.required && this.$v.apellido1.$dirty) {
+      } else if (!this.$v.pais.required && this.$v.pais.$dirty) {
         mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.apellido1.maxLength) {
+      } else if (!this.$v.pais.maxLength) {
         mensaje.push('has llegado al limite');
       }
       return mensaje;
     },
-    mensajeApellido2() {
+    mensajeProvincia() {
       const mensaje = [];
-      if (!this.$v.apellido2.alpha) {
+      if (!this.$v.provincia.alpha) {
         mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.apellido2.required && this.$v.apellido2.$dirty) {
+      } else if (!this.$v.provincia.required && this.$v.provincia.$dirty) {
         mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.apellido2.maxLength) {
+      } else if (!this.$v.provincia.maxLength) {
         mensaje.push('has llegado al limite');
       }
       return mensaje;
     },
-    mensajeEmail() {
+    mensajeCp() {
       const mensaje = [];
-      if (!this.$v.email.email) {
+      if (!this.$v.cp.numeric) {
         mensaje.push('el campo solo admite caracteres alfabeticos');
-      } else if (!this.$v.email.required && this.$v.email.$dirty) {
+      } else if (!this.$v.cp.required && this.$v.cp.$dirty) {
         mensaje.push('rellena el campo');
+      } else if (!this.$v.cp.maxLength) {
+        mensaje.push('has llegado al limite');
       }
       return mensaje;
     },
-    mensajeContraseña() {
+    mensajeCiudad() {
       const mensaje = [];
-      if (!this.$v.password.minLength) {
-        mensaje.push('Se necesita minimo 8 caracteres');
-      } else if (!this.$v.email.required && this.$v.email.$dirty) {
-        mensaje.push('Rellena el campo');
+      if (!this.$v.ciudad.alpha) {
+        mensaje.push('El campo solo admite caracteres alfabéticos');
+      } else if (!this.$v.ciudad.required && this.$v.ciudad.$dirty) {
+        mensaje.push('No has rellenado el campo');
+      } else if (!this.$v.ciudad.maxLength) {
+        mensaje.push('has llegado al limite');
       }
       return mensaje;
     },
-    mensajeContraseñaConf() {
+    mensajeCalle() {
       const mensaje = [];
-      if (!this.$v.passwordC.minLength) {
-        mensaje.push('Se necesitan minimo 8 caracteres');
-      } else if (!this.$v.passwordC.required && this.$v.passwordC.$dirty) {
-        mensaje.push('Rellena el campo');
+      if (!this.$v.calle.alpha) {
+        mensaje.push('El campo solo admite caracteres alfabéticos');
+      } else if (!this.$v.calle.required && this.$v.calle.$dirty) {
+        mensaje.push('No has rellenado el campo');
+      } else if (!this.$v.calle.maxLength) {
+        mensaje.push('has llegado al limite');
       }
       return mensaje;
     },
@@ -237,14 +245,14 @@ export default {
       // if para validar desde front los datos que vamos a mandar a la base de datos
       if (!this.$v.$error) {
         const response = await axios.post(
-          `${process.env.VUE_APP_SERVER_TOTAL_PATH}/register`,
+          `${process.env.VUE_APP_SERVER_TOTAL_PATH}/banios`,
           {
             nombre: this.nombre,
-            apellido1: this.apellido1,
-            apellido2: this.apellido2,
-            email: this.email,
-            contraseña: this.password,
-            contraseña2: this.passwordC,
+            pais: this.pais,
+            provincia: this.provincia,
+            cp: this.cp,
+            ciduad: this.ciudad,
+            calle: this.calle,
           },
         );
         console.log(response);
