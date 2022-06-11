@@ -3,7 +3,7 @@
     <SideBar></SideBar>
     <v-container grid-list-xs>
       <v-row>
-        <v-col cols="12" lg="6" md="6" class="text-center fade-scroll d-flex justify-center">
+        <v-col lg="6" md="6" class="text-center fade-scroll d-flex justify-center">
           <div>
             <lottie-player class="animation-reverse" src="https://assets1.lottiefiles.com/packages/lf20_8zeefdig.json"
               background="transparent" speed="0.75"
