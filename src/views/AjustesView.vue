@@ -19,9 +19,14 @@
         class="text-center fade-scroll d-flex justify-center align-center">
           <div class="titulo">
             <h1>Ajustes</h1>
-            <h2>Personalizar tu lugar de <br>
-             desde aqui</h2>
+            <h2>Si algo no te gusta cambialo desde aqui</h2>
+            <h3>Rápido y para tontos</h3>
           </div>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <listadoComponent></listadoComponent>
         </v-col>
       </v-row>
     </v-container>
@@ -30,11 +35,13 @@
 <script>
 import SideBar from '@/components/SideBar.vue';
 import UserComponent from '@/components/UserComponent.vue';
+import listadoComponent from '@/components/listadoComponent.vue';
 
 export default {
   components: {
     SideBar,
     UserComponent,
+    listadoComponent,
   },
 };
 </script>
