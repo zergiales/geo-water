@@ -125,10 +125,6 @@ export default {
         },
       ],
     },
-    isExitButton: {
-      type: Boolean,
-      default: true,
-    },
     //! Styles
     bgColor: {
       type: String,
@@ -221,10 +217,6 @@ export default {
     justify-content: space-between;
     flex-grow: 1;
     margin: 10px 9.7px 0px;
-  }
-  .menu-logo {
-    width: 30px;
-    margin: 0 10px 0 10px;
   }
   .sidebar {
     position: relative;
