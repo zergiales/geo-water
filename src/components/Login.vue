@@ -91,7 +91,7 @@ export default {
           contraseña: this.password,
         },
       );
-      console.log(process.env.VUE_APP_SERVER_TOTAL_PATH);
+      console.log(response);
       if (response.data.nombre) {
         setTimeout(() => {
           this.snackbarLogin = true;
@@ -99,7 +99,7 @@ export default {
         }, 1000);
         setTimeout(() => {
           this.$router.push('/home');
-        }, 3000);
+        }, 2000);
       } else {
         this.dialog = true;
         this.email = '';

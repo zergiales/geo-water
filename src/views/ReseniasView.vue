@@ -60,7 +60,7 @@
       </v-row>
       <v-row>
         <v-col cols="12">
-          <h1>Tus últimas reseñas</h1>
+          <h1>Últimas reseñas por la comunidad</h1>
         </v-col>
       </v-row>
       <v-row>
