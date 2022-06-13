@@ -13,15 +13,27 @@
           </div>
           <v-form @submit.prevent="getUser" ref="form">
             <v-card-text>
-              <v-text-field class="pt-1" v-model="email" :rules="emailRules" type="email"
+              <v-text-field
+                class="pt-1"
+                v-model="email"
                 label="Correo electrónico"
-                placeholder="correo@gmail.com" prepend-inner-icon="mdi-account"
-                required />
-              <v-text-field class="pt-1 titulillo" v-model="password" :rules="passwordRules"
-                :type="passwordShow ? 'text' : 'password'"
-                label="Contraseña" placeholder="1234"
-                prepend-inner-icon="mdi-key" :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
-                @click:append="passwordShow = !passwordShow" required />
+                placeholder="correo@gmail.com"
+                required
+                prepend-inner-icon="mdi-account"
+                :error-messages="mensajeEmail()"
+                />
+              <v-text-field
+              class="pt-1 titulillo"
+              v-model="password"
+              :type="passwordShow ? 'text' : 'password'"
+              label="Contraseña"
+              prepend-inner-icon="mdi-key"
+              :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
+              placeholder="12345678"
+              @click:append="passwordShow = !passwordShow"
+              required
+              :error-messages="mensajeContraseña()"
+              />
               <v-row class="texto pl-10">
                 <v-col col="6" lg="6" md="6" sm="12">¿Aún no estas registrado?</v-col>
                 <v-col class="enlace" col="6" lg="6" md="6" sm="12"
@@ -63,24 +75,27 @@
 
 <script>
 import axios from 'axios';
+import { validationMixin } from 'vuelidate';
+import {
+  required, maxLength, minLength, email,
+} from 'vuelidate/lib/validators';
 
 export default {
   name: 'App',
+  mixins: [validationMixin],
+  validations: {
+    email: {
+      required, email, maxLength: maxLength(20),
+    },
+    password: { required, minLength: minLength(8) },
+  },
   data: () => ({
     dialog: false,
     loading: false,
     snackbarLogin: false,
     passwordShow: false,
     email: '',
-    emailRules: [
-      (v) => !!v || 'Se necesita un correo valido',
-      (v) => /.+@.+\..+/.test(v) || 'acuerdate de escribirlo bien con @gmail.com...',
-    ],
     password: '',
-    passwordRules: [
-      (v) => !!v || 'Se necesita una contraseña valida',
-      (v) => (v && v.length >= 8) || 'la contraseña debe tener minimo 8 caracteres!',
-    ],
   }),
   methods: {
     async getUser() {
@@ -105,6 +120,24 @@ export default {
         this.email = '';
         this.password = '';
       }
+    },
+    mensajeEmail() {
+      const mensaje = [];
+      if (!this.$v.email.email) {
+        mensaje.push('el campo solo admite caracteres alfabeticos');
+      } else if (!this.$v.email.required && this.$v.email.$dirty) {
+        mensaje.push('rellena el campo');
+      }
+      return mensaje;
+    },
+    mensajeContraseña() {
+      const mensaje = [];
+      if (!this.$v.password.minLength) {
+        mensaje.push('Se necesita minimo 8 caracteres');
+      } else if (!this.$v.email.required && this.$v.email.$dirty) {
+        mensaje.push('Rellena el campo');
+      }
+      return mensaje;
     },
   },
 };
