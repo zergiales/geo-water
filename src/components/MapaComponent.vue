@@ -1,8 +1,8 @@
     <template>
-    <div>
-      <div id="map"></div>
-    </div>
-    </template>
+  <div>
+    <div id="map"></div>
+  </div>
+</template>
 <script>
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
@@ -22,7 +22,8 @@ export default {
       const map = new mapboxgl.Map({
         container: 'map',
         center: [-3.6593019, 40.5238136], // posicion inicial
-        zoom: 11,
+        zoom: 16,
+        pitch: 45,
         style: 'mapbox://styles/zergiales/cl3bqhxaz000515jtbhj65ma3',
       });
       const geocoder = new MapboxGeocoder({
@@ -63,64 +64,76 @@ export default {
 </script>
 <style>
 /*mapa en si */
-  #map{
-    position: absolute;
-    width: 50%;
-    height:500px;
-    border-radius: 15px;
-  }
-  /*icono de la geolocalizacion */
-  .mapboxgl-ctrl button.mapboxgl-ctrl-geolocate .mapboxgl-ctrl-icon{
-    background-color:white;
-  }
+#map {
+  position: absolute;
+  width: 50%;
+  height: 500px;
+  border-radius: 15px;
+}
 
-  /*input del buscador */
-  .geocoder-dropdown-item {
-    padding: 5px;
-  }
-  .geocoder-dropdown-icon {
-    margin-right: 10px;
-  }
-  .geocoder-dropdown-text {
-    color: #5a3fc0;
-    font-family: defecto;
-    font-size: larger;
-  }
-    /*buscador */
-  .mapboxgl-ctrl-geocoder {
-    width: 250px;
-    border-radius: 10px;
-    color: white;
-    font-weight: bold;
-  }
-  .mapboxgl-ctrl-geocoder:hover{
-    transition:1s ease-in;
-    cursor:pointer
-  }
-  .mapboxgl-ctrl-geocoder:focus{
-    text-decoration: none;
-  }
-  /*lo que sale cuando le damos a las opciones */
-  .geocoder-dropdown-text{
-    color:white;
-  }
-  .mapboxgl-ctrl-geocoder .suggestions{
-    background-color:#3f51b59d;
-  }
-  /*para que no se vea las letras de mapbox */
-  .mapboxgl-ctrl-attrib-inner{
-    display: none;
-    }
-  .mapboxgl-ctrl-logo {
-    display: none !important;
-  }
-  /*para que en el desplegable se cambie el color */
-  .mapboxgl-ctrl-geocoder .suggestions > .active > a,
-  .mapboxgl-ctrl-geocoder .suggestions>li>a:hover {
-    background-color:#3f51b5;
-  }
-  /*para quitar un link */
-  .mapboxgl-ctrl-geocoder--powered-by{
-    display: none !important;
-  }
+/*icono de la geolocalizacion */
+.mapboxgl-ctrl button.mapboxgl-ctrl-geolocate .mapboxgl-ctrl-icon {
+  background-color: white;
+}
+
+/*input del buscador */
+.geocoder-dropdown-item {
+  padding: 5px;
+}
+
+.geocoder-dropdown-icon {
+  margin-right: 10px;
+}
+
+.geocoder-dropdown-text {
+  color: #5a3fc0;
+  font-family: defecto;
+  font-size: larger;
+}
+
+/*buscador */
+.mapboxgl-ctrl-geocoder {
+  width: 250px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.mapboxgl-ctrl-geocoder:hover {
+  transition: 1s ease-in;
+  cursor: pointer
+}
+
+.mapboxgl-ctrl-geocoder:focus {
+  text-decoration: none;
+}
+
+/*lo que sale cuando le damos a las opciones */
+.geocoder-dropdown-text {
+  color: white;
+}
+
+.mapboxgl-ctrl-geocoder .suggestions {
+  background-color: #3f51b59d;
+}
+
+/*para que no se vea las letras de mapbox */
+.mapboxgl-ctrl-attrib-inner {
+  display: none;
+}
+
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}
+
+/*para que en el desplegable se cambie el color */
+.mapboxgl-ctrl-geocoder .suggestions>.active>a,
+.mapboxgl-ctrl-geocoder .suggestions>li>a:hover {
+  background-color: #3f51b5;
+}
+
+/*para quitar un link */
+.mapboxgl-ctrl-geocoder--powered-by {
+  display: none !important;
+}
 </style>
