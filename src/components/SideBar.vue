@@ -94,28 +94,28 @@ export default {
           icon: 'bx-grid-alt',
         },
         {
-          link: '/Usuario',
-          name: 'Usuario',
-          tooltip: 'Usuario',
-          icon: 'bx-user',
-        },
-        {
-          link: '/resenias',
-          name: 'reseñas',
-          tooltip: 'resenias',
-          icon: 'bx-chat',
-        },
-        {
           link: '/banios',
           name: 'baños',
           tooltip: 'baños',
           icon: 'bx-bath',
         },
         {
+          link: '/resenias',
+          name: 'reseñas',
+          tooltip: 'reseñas',
+          icon: 'bx-chat',
+        },
+        {
           link: '/Ajustes',
           name: 'Ajustes',
           tooltip: 'Ajustes',
           icon: 'bx-cog',
+        },
+        {
+          link: '/Usuario',
+          name: 'Usuario',
+          tooltip: 'Usuario',
+          icon: 'bx-user',
         },
         {
           link: '/',

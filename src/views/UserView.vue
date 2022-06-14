@@ -27,7 +27,7 @@
       </v-row>
       <v-row>
         <v-col v-for="item in items" :key="item"
-        cols="12" lg="6" xl="6" class="align-center justify-content-center white--text">
+         lg="4" xl="4" md="6" sm="12" class="align-center justify-content-center white--text">
           <div class="cont con1">
             <div class="box box1">
               <div class="front">
@@ -71,13 +71,6 @@ export default {
         boton: 'Eliminar',
       },
       {
-        titulo: 'Permisos',
-        descripcion1: 'agrega o quita permisos a los usuarios',
-        descripcion2: 'Aquí podrás eliminar permisos a los usuarios de la aplicacion',
-        url: '/Usuario/',
-        boton: 'Cambiar permisos',
-      },
-      {
         titulo: 'Busqueda',
         descripcion1: 'Realiza una busqueda en las bases de datos',
         descripcion2: 'accede a los datos de las bases de usuario,baños y reseñas',
@@ -86,7 +79,7 @@ export default {
       },
       {
         titulo: 'Modificar',
-        descripcion1: 'edita algún dato de algun usuario o baño',
+        descripcion1: 'Modifica los permisos y los datos',
         descripcion2: 'Realiza una busqueda y cambia.Aqui solo podras editar cosas que se ven en front',
         url: '/home',
         boton: 'Modificar',
