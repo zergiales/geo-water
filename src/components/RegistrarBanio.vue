@@ -256,8 +256,9 @@ export default {
           },
         );
         console.log(response);
-        if (response.data.text) {
-          this.$router.push('/');
+        console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/banios`);
+        if (response.data.nombre) {
+          this.$router.push('/banios');
         } else {
           this.snackbar = true;
           this.email = '';

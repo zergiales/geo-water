@@ -107,6 +107,7 @@ export default {
         },
       );
       console.log(response);
+      console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`);
       if (response.data.nombre) {
         setTimeout(() => {
           this.snackbarLogin = true;

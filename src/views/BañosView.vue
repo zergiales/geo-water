@@ -23,7 +23,9 @@
         <v-col cols="12">
           <RegistrarBanio></RegistrarBanio>
         </v-col>
-        <v-cols></v-cols>
+        <v-col>
+          <h1>Ultimos baños insertados</h1>
+        </v-col>
       </v-row>
       <footer class="pt-9">
       <FooterComponent></FooterComponent>
