@@ -20,11 +20,21 @@
         </v-col>
       </v-row>
       <v-row class="fondoBaño">
-        <v-col cols="12">
+        <v-col xl="6" lg="6" md="12" sm="12">
           <RegistrarBanio></RegistrarBanio>
         </v-col>
-        <v-col>
-          <h1>Ultimos baños insertados</h1>
+        <v-col xl="6" lg="6" md="12" sm="12">
+          <h1 class="titulillo" color="indigo ">Mis útimos baños insertados</h1>
+          <!--to do: sacar los baños que ha insertado el usuario -->
+          <MisBañosComponent></MisBañosComponent>
+        </v-col>
+      </v-row>
+      <v-row>
+      <h1 color="indigo">Baños cerca de tu localización</h1>
+      </v-row>
+      <v-row>
+        <v-col cols="12">
+          <tarjetas-component></tarjetas-component>
         </v-col>
       </v-row>
       <footer class="pt-9">
@@ -36,17 +46,22 @@
 <script>
 import SideBar from '@/components/SideBar.vue';
 import RegistrarBanio from '@/components/RegistrarBanio.vue';
+import TarjetasComponent from '@/components/TarjetasComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
+import MisBañosComponent from '@/components/MisBañosComponent.vue';
 
 export default {
   components: {
     SideBar,
     RegistrarBanio,
+    TarjetasComponent,
+    MisBañosComponent,
     FooterComponent,
   },
 };
 </script>
-<style>
+<styl,
+    MisBañosComponente>
   @import '../assets/css/style.css';
   @import '../assets/css/baños.css';
 </style>

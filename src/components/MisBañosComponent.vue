@@ -1,9 +1,9 @@
-<!--tarjetas para mostrar los baños de la comindad en home y en el apartado de baños-->
+<!--componente que contiene los baños que el usuario ha insertado en la tabla de baños-->
 <template>
   <v-row dense>
-    <v-col v-for="item in items" :key="item" cols="4">
+    <v-col v-for="item in items" :key="item">
       <v-card class="mx-auto" max-width="344">
-        <v-img :src='item.imagen' :name="item.descripcion" height="200px"></v-img>
+        <v-img src='/assets/img/fondos/barajas.png' :name="item.descripcion" height="200px"></v-img>
         <v-card-title v-text="item.title"></v-card-title>
         <v-card-subtitle v-text="item.distancia"></v-card-subtitle>
         <v-card-actions>
@@ -29,6 +29,7 @@
 export default {
   data: () => ({
     show: false,
+    /* to do: la idea es pillar todo desde back y pasarlo a front en un array de objetos */
     items: [
       {
         imagen: '@/assets/img/fondos/barajas.jpg',
@@ -41,12 +42,6 @@ export default {
         title: 'Baño quebradilla',
         distancia: '790 m cerca de ti',
         descripcion: 'cerrado a las 12',
-      },
-      {
-        imagen: '@/assets/img/fondos/barajas.jpg',
-        title: 'Baño biblioteca',
-        distancia: '5 km cerca de ti',
-        descripcion: 'perfecto',
       },
     ],
   }),

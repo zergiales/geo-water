@@ -70,17 +70,17 @@ export default {
       type: String,
       // default: require('../assets/img/photo.jpg'),
     },
-    isPaddingLeft: {
+    esAbierto: {
       type: Boolean,
       default: true,
     },
-    menuOpenedPaddingLeftBody: {
+    menuAbierto: {
       type: String,
       default: '250px',
     },
-    menuClosedPaddingLeftBody: {
+    menucerrado: {
       type: String,
-      default: '78px',
+      default: '0px',
     },
 
     //! Menu items
@@ -173,9 +173,11 @@ export default {
     };
   },
   mounted() {
+    /* ciclo de vida en montado para ejecute el menu cuando toque */
     this.isOpened = this.isMenuOpen;
   },
   computed: {
+    /* uso de sass para programar el menu */
     cssVars() {
       return {
         '--bg-color': this.bgColor,
@@ -194,13 +196,12 @@ export default {
   watch: {
     isOpened() {
       window.document.body.style.paddingLeft = this.isOpened;
-      window.document.body.style.paddingLeft = this.isPaddingLeft
-        ? this.menuOpenedPaddingLeftBody : this.menuClosedPaddingLeftBody;
+      window.document.body.style.paddingLeft = this.esAbierto ? this.menuAbierto : this.menucerrado;
     },
   },
 };
 </script>
-
+<!--Arreglar responsive del menu -->
 <style>
   @import url('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css');
   * {

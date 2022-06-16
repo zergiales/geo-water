@@ -1,4 +1,4 @@
-<!--lo organizamos todo en unaunica vista-->
+<!--lo organizamos todo en una unica vista-->
 <template>
   <div>
     <SideBar></SideBar>
@@ -9,10 +9,12 @@
     </v-row>
     <v-container fluid>
       <v-row>
-        <v-col cols-lg="6" cols-md="12">
+        <v-col xl="6" lg="6" md="12" sm="12">
           <MapaComponent></MapaComponent>
         </v-col>
-        <v-col cols-lg="6" cols-md="12">
+        <!-- meter un menu circular con el que interactuar y poder
+         cambiar los botones del mapa de arriba cuando sea posible TODOOO -->
+        <v-col lg="6" md="12">
           <InfoComponent></InfoComponent>
         </v-col>
       </v-row>
