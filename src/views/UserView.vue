@@ -37,8 +37,10 @@
               </div>
               <div class="back">
                 <div class="txt3" v-text="item.descripcion2"></div>
-              <v-btn @click="$router.push('{item.url}')" color="green">
-                <span class="white--text px-4" v-text="item.boton"></span>
+              <v-btn color="green">
+              <a class="white--text px-4 botones"
+              v-text="item.boton" color="green" v-bind:href="item.url">
+              item.boton</a>
               </v-btn>
               </div>
             </div>
