@@ -90,6 +90,9 @@ export default {
   }),
 };
 </script>
-<style>@import '../assets/css/style.css';
+<style>
 @import '../assets/css/style.css';
+.botones{
+  text-decoration:none;
+}
 </style>
