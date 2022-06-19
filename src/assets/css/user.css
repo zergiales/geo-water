@@ -1,0 +1,91 @@
+/*animacion de las tarjetas*/
+/*tarjetas de los pases*/
+.cont {
+  background-color: #3F51B5;
+  margin: 10% auto;
+  height: 200px;
+  width: 350px;
+  text-align: center;
+  transition: all 1s;
+  border-radius: 4px;
+}
+/* para modificar las tarjetas en el responsive */
+.cont:hover {
+  box-shadow: 8px 10px 12px rgba(0, 0, 0, 0.678);
+}
+
+.box .front {
+  transform: translateY(80px);
+  transition: all 1s;
+}
+
+.line {
+  border: 1px solid #fffdf4;
+  background: #fffdf4;
+  margin: 5px auto;
+  transition: all 1s;
+  width: 80px;
+}
+
+.cont:hover .line {
+  width: 220px;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 230px;
+  width: 360px;
+  border-radius: 4px;
+  transition: all 1s;
+}
+.cont:hover .box {
+  background:#7388ffba;
+  transform: rotate(5deg);
+}
+.cont:hover {
+  transform: rotate(-5deg);
+}
+
+.back {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: all 1s 0.25s;
+}
+.txt1 {
+  font-size: 1.5em;
+}
+
+.txt2 {
+  font-style: oblique;
+}
+
+.txt3 {
+  margin: 7px;
+}
+
+.cont:hover .back {
+  opacity: 1;
+  /* transition-delay: 1s; */
+  transform: translateY(-10px);
+}
+
+.cont:hover .front {
+  transform: translateY(-10px);
+}
+/*responsive */
+/*
+@media screen and (min-width: 1440px) {
+  .cont {
+    width: 90%;
+
+  }
+  .txt1 , .txt2 {
+    margin-left: -50%;
+  }
+  .line {
+    margin-left:-0.9%;
+  }
+}*/

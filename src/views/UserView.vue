@@ -27,7 +27,8 @@
       </v-row>
       <v-row>
         <v-col v-for="item in items" :key="item"
-         lg="4" xl="4" md="6" sm="12" class="align-center justify-content-center white--text">
+         lg="4" xl="4" md="6" sm="12" class="align-center justify-content-center white--text
+          ">
           <div class="cont con1">
             <div class="box box1">
               <div class="front">
@@ -67,21 +68,21 @@ export default {
     items: [
       {
         titulo: 'Eliminar',
-        descripcion1: 'baños reseñas o usuarios',
+        descripcion1: 'Elimina los datos de la bd',
         descripcion2: 'Busca al usuario o el baño que quieras y eliminalo',
         url: '/Usuario/eliminar',
         boton: 'Eliminar',
       },
       {
         titulo: 'Busqueda',
-        descripcion1: 'Realiza una busqueda en las bases de datos',
+        descripcion1: 'Realiza una busqueda',
         descripcion2: 'accede a los datos de las bases de usuario,baños y reseñas',
         url: '/Usuario/busqueda',
         boton: 'Realizar busqueda',
       },
       {
         titulo: 'Modificar',
-        descripcion1: 'Modifica los permisos y los datos',
+        descripcion1: 'Modifica los permisos',
         descripcion2: 'Realiza una busqueda y cambia.Aqui solo podras editar cosas que se ven en front',
         url: '/Usuario/modificar',
         boton: 'Modificar',
@@ -91,7 +92,7 @@ export default {
 };
 </script>
 <style>
-@import '../assets/css/style.css';
+@import '../assets/css/user.css';
 .botones{
   text-decoration:none;
 }
