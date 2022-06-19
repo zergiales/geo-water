@@ -14,7 +14,14 @@
         class="text-center fade-scroll d-flex justify-center align-center">
           <div class="titulo">
               <h1>Bienvenido Super usuario</h1>
-              <h3>En este menu podrás realizar funcionalidades de superusuario</h3>
+              <h3>En este menu podrás modificar los datos</h3>
+          </div>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col lg="12"  class="text-center fade-scroll d-flex justify-center">
+          <div>
+              <h1>¿Qué desea hacer?</h1>
           </div>
         </v-col>
       </v-row>
@@ -46,46 +53,3 @@
     </v-container>
   </div>
 </template>
-<script>
-import SideBar from '@/components/SideBar.vue';
-import FooterComponent from '@/components/FooterComponent.vue';
-
-export default {
-  components: {
-    SideBar,
-    FooterComponent,
-  },
-  data: () => ({
-    show: false,
-    items: [
-      {
-        titulo: 'Eliminar',
-        descripcion1: 'baños reseñas o usuarios',
-        descripcion2: 'Busca al usuario o el baño que quieras y eliminalo',
-        url: '/Usuario/eliminar',
-        boton: 'Eliminar',
-      },
-      {
-        titulo: 'Busqueda',
-        descripcion1: 'Realiza una busqueda en las bases de datos',
-        descripcion2: 'accede a los datos de las bases de usuario,baños y reseñas',
-        url: '/Usuario/busqueda',
-        boton: 'Realizar busqueda',
-      },
-      {
-        titulo: 'Modificar',
-        descripcion1: 'Modifica los permisos y los datos',
-        descripcion2: 'Realiza una busqueda y cambia.Aqui solo podras editar cosas que se ven en front',
-        url: '/Usuario/modificar',
-        boton: 'Modificar',
-      },
-    ],
-  }),
-};
-</script>
-<style>
-@import '../assets/css/style.css';
-.botones{
-  text-decoration:none;
-}
-</style>

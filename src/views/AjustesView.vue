@@ -34,13 +34,11 @@
 </template>
 <script>
 import SideBar from '@/components/SideBar.vue';
-import UserComponent from '@/components/UserComponent.vue';
 import listadoComponent from '@/components/listadoComponent.vue';
 
 export default {
   components: {
     SideBar,
-    UserComponent,
     listadoComponent,
   },
 };

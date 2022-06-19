@@ -3,7 +3,7 @@
   <v-row dense>
     <v-col v-for="item in items" :key="item">
       <v-card class="mx-auto" max-width="344">
-        <v-img src='/assets/img/fondos/barajas.png' :name="item.descripcion" height="200px"></v-img>
+        <v-img :src='item.imagen' :name="item.descripcion" height="200px"></v-img>
         <v-card-title v-text="item.title"></v-card-title>
         <v-card-subtitle v-text="item.distancia"></v-card-subtitle>
         <v-card-actions>
@@ -26,19 +26,21 @@
   </v-row>
 </template>
 <script>
+import { require } from 'vuelidate/lib/validators';
+
 export default {
   data: () => ({
     show: false,
     /* to do: la idea es pillar todo desde back y pasarlo a front en un array de objetos */
     items: [
       {
-        imagen: '@/assets/img/fondos/barajas.jpg',
+        imagen: require('@/assets/img/fondos/barajas.jpg'),
         title: 'Baño Salud',
         distancia: '20 km cerca de ti',
         descripcion: 'especial para minusvalidos',
       },
       {
-        imagen: '@/assets/img/fondos/barajas.jpg',
+        imagen: require('@/assets/img/fondos/barajas.jpg'),
         title: 'Baño quebradilla',
         distancia: '790 m cerca de ti',
         descripcion: 'cerrado a las 12',

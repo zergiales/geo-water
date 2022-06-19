@@ -26,24 +26,26 @@
   </v-row>
 </template>
 <script>
+import { require } from 'vuelidate/lib/validators';
+
 export default {
   data: () => ({
     show: false,
     items: [
       {
-        imagen: '@/assets/img/fondos/barajas.jpg',
+        imagen: require('@/assets/img/fondos/barajas.jpg'),
         title: 'Baño Salud',
         distancia: '20 km cerca de ti',
         descripcion: 'especial para minusvalidos',
       },
       {
-        imagen: '@/assets/img/fondos/barajas.jpg',
+        imagen: require('@/assets/img/fondos/fondo.png'),
         title: 'Baño quebradilla',
         distancia: '790 m cerca de ti',
         descripcion: 'cerrado a las 12',
       },
       {
-        imagen: '@/assets/img/fondos/barajas.jpg',
+        imagen: require('@/assets/img/fondos/barajas.jpg'),
         title: 'Baño biblioteca',
         distancia: '5 km cerca de ti',
         descripcion: 'perfecto',

@@ -21,6 +21,8 @@ export default {
       mapboxgl.accessToken = 'pk.eyJ1IjoiemVyZ2lhbGVzIiwiYSI6ImNsM2JwZmVxcTBkbDQzYnA0czd5bGJpNTgifQ.iK9cRRLuaeol1Vdm2W68_A';
       const map = new mapboxgl.Map({
         container: 'map',
+        // Limitar la posicion a españa
+        countries: 'esp',
         center: [-3.6593019, 40.5238136], // posicion inicial
         zoom: 16,
         pitch: 45,

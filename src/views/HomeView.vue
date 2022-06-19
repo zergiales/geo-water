@@ -2,11 +2,7 @@
 <template>
   <div>
     <SideBar></SideBar>
-    <v-row>
-      <v-col cols="12">
-        <UserComponent></UserComponent>
-      </v-col>
-    </v-row>
+    <div>holaaaa</div>
     <v-container fluid>
       <v-row>
         <v-col xl="6" lg="6" md="12" sm="12">
@@ -16,6 +12,12 @@
          cambiar los botones del mapa de arriba cuando sea posible TODOOO -->
         <v-col lg="6" md="12">
           <InfoComponent></InfoComponent>
+        </v-col>
+      </v-row>
+      <v-row>
+        <h1 class="pl-5">Baños cerca de tu localización</h1>
+        <v-col cols="12">
+          <tarjetas-component></tarjetas-component>
         </v-col>
       </v-row>
     <footer class="pt-9">
@@ -28,16 +30,30 @@
 import SideBar from '@/components/SideBar.vue';
 import MapaComponent from '@/components/MapaComponent.vue';
 import InfoComponent from '@/components/InfoComponent.vue';
-import UserComponent from '@/components/UserComponent.vue';
+import TarjetasComponent from '@/components/TarjetasComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
+import axios from 'axios';
 
 export default {
   components: {
     SideBar,
     MapaComponent,
     InfoComponent,
-    UserComponent,
+    TarjetasComponent,
     FooterComponent,
+  },
+  setup: {
+    async getUser() {
+      const response = await axios.post(
+        `${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`,
+        {
+          email: this.email,
+          contraseña: this.password,
+        },
+      );
+      console.log(response);
+      console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`);
+    },
   },
 };
 </script>

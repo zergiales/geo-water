@@ -18,15 +18,16 @@
                   @input="$v.nombre.$touch()"
                   :error-messages="mensajeNombre()"
                 />
-                <v-text-field
+                <v-select
                   v-model="pais"
-                  :counter="20"
+                  :items="paises"
                   label="Pais"
-                  placeholder="España"
                   required
-                  @input="$v.pais.$touch()"
+                  @change="$v.select.$touch()"
+                  @blur="$v.select.$touch()"
                   :error-messages="mensajePais()"
-                />
+                  >
+                </v-select>
                 <v-text-field
                   v-model="provincia"
                   :counter="20"
@@ -61,7 +62,15 @@
                   @input="$v.calle.$touch()"
                   :error-messages="mensajeCalle()"
                 />
-              </v-card-text>
+                <v-checkbox v-model="checkbox"
+                label="¿Das permiso a Geo water para acceder a tu posición en tiempo real?"
+                required @change="$v.checkbox.$touch()" @blur="$v.checkbox.$touch()"
+                ></v-checkbox>
+                <v-checkbox v-model="checkbox"
+                label="Acepto los terminos y condiciones de la empresa"
+                required @change="$v.checkbox.$touch()" @blur="$v.checkbox.$touch()"
+                ></v-checkbox>
+             </v-card-text>
               <v-card-actions class="justify-center d-flex flex-wrap mb-15">
                 <v-btn
                   :disabled="$v.$invalid"
@@ -91,7 +100,7 @@
     >
       <v-card color="indigo">
         <v-card-title class="text-h5 white--text">
-          Registro limpiado
+          Formulario limpio
         </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -100,7 +109,7 @@
       </v-card>
     </v-dialog>
     <v-snackbar top color="red" v-model="snackbar">
-      Registro incorrecto
+      Datos incorrectos
     </v-snackbar>
   </div>
 </template>
@@ -129,6 +138,12 @@ export default {
       required,
       maxLength: maxLength(20),
       alpha,
+    },
+    select: { required },
+    checkbox: {
+      checked(val) {
+        return val;
+      },
     },
     provincia: {
       required,
@@ -163,6 +178,10 @@ export default {
     cp: '',
     ciudad: '',
     calle: '',
+    paises: [
+      'Esp',
+    /* actualmente solo ponemos españa porque solo se despliega aquí */
+    ],
   }),
   methods: {
     clear() {
