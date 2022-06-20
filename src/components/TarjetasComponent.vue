@@ -1,7 +1,7 @@
 <!--tarjetas para mostrar los baños de la comindad en home y en el apartado de baños-->
 <template>
   <v-row dense>
-    <v-col v-for="item in items" :key="item" cols="4">
+    <v-col v-for="(item,index) in items" :key="index" cols="4">
       <v-card class="mx-auto" max-width="344">
         <v-img :src='item.imagen' :name="item.descripcion" height="200px"></v-img>
         <v-card-title v-text="item.title"></v-card-title>

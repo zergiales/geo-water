@@ -9,8 +9,6 @@ import resenias from '../views/ReseniasView.vue';
 import Ajustes from '../views/AjustesView.vue';
 import baños from '../views/BañosView.vue';
 import Usuario from '../views/UserView.vue';
-import FormularioRes from '../views/FormularioRes.vue';
-import MisReseñas from '../views/MisReseñas.vue';
 import Eliminar from '../views/EliminarView.vue';
 import Busqueda from '../views/BusquedaView.vue';
 import Modificar from '../views/ModificarView.vue';
@@ -37,16 +35,6 @@ const routes = [
     path: '/resenias',
     name: 'resenias',
     component: resenias,
-  },
-  {
-    path: '/resenias/FormularioRes',
-    name: 'FormularioRes',
-    component: FormularioRes,
-  },
-  {
-    path: '/resenias/MisResenias',
-    name: 'MisResenias',
-    component: MisReseñas,
   },
   {
     path: '/ajustes',

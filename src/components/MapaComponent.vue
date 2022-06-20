@@ -57,6 +57,8 @@ export default {
           showUserHeading: true,
         }),
       );
+      // para sacar las coordenadas
+      console.log(map);
       // Add zoom and rotation controls to the map.
       map.addControl(new mapboxgl.NavigationControl());
     },

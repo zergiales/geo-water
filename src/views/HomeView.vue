@@ -2,7 +2,7 @@
 <template>
   <div>
     <SideBar></SideBar>
-    <div>holaaaa</div>
+    <div> {{ $store.state.msg }}</div>
     <v-container fluid>
       <v-row>
         <v-col xl="6" lg="6" md="12" sm="12">
