@@ -33,7 +33,7 @@
             :key="index"
           >
             <li>
-              <router-link to="{path:menuItem.link}">
+              <router-link :to="{path:menuItem.link}">
                 <i
                   class="bx"
                   :class="menuItem.icon || 'bx-square-rounded'"
