@@ -48,10 +48,10 @@
           </div>
         </v-col>
       </v-row>
-      <footer class="pt-9">
+    </v-container>
+    <footer class="pt-9">
       <FooterComponent></FooterComponent>
     </footer>
-    </v-container>
   </div>
 </template>
 <script>

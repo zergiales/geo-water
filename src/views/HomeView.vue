@@ -20,10 +20,10 @@
           <tarjetas-component></tarjetas-component>
         </v-col>
       </v-row>
+    </v-container>
     <footer class="pt-9">
       <FooterComponent></FooterComponent>
     </footer>
-    </v-container>
   </div>
 </template>
 <script>

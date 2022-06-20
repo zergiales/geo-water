@@ -38,10 +38,10 @@
           <v-textarea counter label="Text" :rules="rules" :value="value"></v-textarea>
         </v-col>
       </v-row>-->
+    </v-container>
     <footer class="pt-9">
       <FooterComponent></FooterComponent>
     </footer>
-    </v-container>
   </v-main>
 </template>
 <script>

@@ -45,10 +45,10 @@
           <MisBañosComponent></MisBañosComponent>
         </v-col>
       </v-row>
-      <footer class="pt-9">
-      <FooterComponent></FooterComponent>
-    </footer>
     </v-container>
+    <footer class="pt-9">
+        <FooterComponent></FooterComponent>
+    </footer>
   </div>
 </template>
 <script>

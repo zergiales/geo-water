@@ -12,6 +12,7 @@ import Usuario from '../views/UserView.vue';
 import Eliminar from '../views/EliminarView.vue';
 import Busqueda from '../views/BusquedaView.vue';
 import Modificar from '../views/ModificarView.vue';
+import Error from '../views/ErrorView.vue';
 
 Vue.use(VueRouter);
 // main component
@@ -68,6 +69,12 @@ const routes = [
     path: '/usuario/modificar',
     name: 'Modificar',
     component: Modificar,
+  },
+  /* vista error 404 not found */
+  {
+    path: '/*',
+    name: 'error-404',
+    component: Error,
   },
 ];
 
