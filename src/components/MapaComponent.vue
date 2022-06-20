@@ -31,7 +31,6 @@ export default {
       const geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         types: 'poi',
-        // see https://docs.mapbox.com/api/search/#geocoding-response-object for information about the schema of each response feature
         render(item) {
           // extract the item's maki icon or use a default
           const maki = item.properties.maki || 'marker';

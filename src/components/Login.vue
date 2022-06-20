@@ -106,7 +106,8 @@ export default {
           contraseña: this.password,
         },
       );
-      console.log(response);
+      console.log(this.email);
+      console.log(this.password);
       console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`);
       if (response.data.nombre) {
         setTimeout(() => {
