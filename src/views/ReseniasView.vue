@@ -19,43 +19,8 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-col cols="12" lg="6" xl="6" class="align-center justify-content-center white--text">
-          <div class="cont con1">
-            <div class="box box1">
-              <div class="front">
-                <div class="txt1">Mis reseñas</div>
-                <div class="line"></div>
-                <div class="txt2">mira tus ultimas aportaciones</div>
-              </div>
-              <div class="back">
-                <div class="txt3">
-                  Mira que puntuacion te pone el resto de personas
-                </div>
-              <v-btn @click="$router.push('/resenias/MisResenias')" color="green">
-                <span class="white--text px-4">Echale un ojo</span>
-              </v-btn>
-              </div>
-            </div>
-          </div>
-        </v-col>
-        <v-col cols="12" lg="6" xl="6" class="align-center justify-content-center white--text">
-          <div class="cont cont2">
-            <div class="box box2">
-              <div class="front">
-                <div class="txt1">Hacer reseña</div>
-                <div class="line"></div>
-                <div class="txt2">saca tu lado critico</div>
-              </div>
-              <div class="back">
-                <div class="txt3">
-                  Ayuda a la comunidad a crecer
-                </div>
-              <v-btn @click="$router.push('/resenias/FormularioRes')" color="green">
-                <span class="white--text px-4">Soy un criticon</span>
-              </v-btn>
-              </div>
-            </div>
-          </div>
+        <v-col>
+          <ResFormComponent></ResFormComponent>
         </v-col>
       </v-row>
       <v-row>
@@ -81,12 +46,14 @@
 </template>
 <script>
 import ReseniasComponent from '@/components/ReseniasComponent.vue';
+import ResFormComponent from '@/components/ResFormComp.vue';
 import SideBar from '@/components/SideBar.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 
 export default {
   components: {
     SideBar,
+    ResFormComponent,
     ReseniasComponent,
     FooterComponent,
   },

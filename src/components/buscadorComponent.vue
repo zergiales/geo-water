@@ -4,31 +4,30 @@
       <v-row>
         <v-col class="mx-auto">
           <v-card class="pa-4">
-            <v-form @submit.prevent="registerUser" ref="form" method="post">
+            <v-form @submit.prevent="enviarDatos" ref="form" method="post">
               <v-card-text>
                 <v-select
-                  v-model="pais"
-                  :items="paises"
-                  label="Pais"
+                  v-model="tabla"
+                  :items="tablas"
+                  label="seleccione la tabla"
                   required
                   @change="$v.select.$touch()"
-                  @blur="$v.select.$touch()"
-                  :error-messages="mensajePais()"
+                  :error-messages="mensajeTabla()"
                   >
                 </v-select>
                 <v-text-field
                   v-model="nombre"
                   :counter="20"
                   label="Nombre"
-                  placeholder="Nombre del baño"
+                  placeholder="Nombre del usuario o titulo"
                   required
                   @input="$v.nombre.$touch()"
                   :error-messages="mensajeNombre()"
                 />
+                <!--:disabled="$v.$invalid"-->
              </v-card-text>
               <v-card-actions class="justify-center d-flex flex-wrap mb-15">
                 <v-btn
-                  :disabled="$v.$invalid"
                   type="submit"
                   color="indigo"
                   class="mb-3 mt-3"
@@ -38,7 +37,7 @@
                 <v-btn @click="clear()" color="indigo">
                   <span class="white--text px-4">Limpiar</span>
                 </v-btn>
-                <v-btn @click="$router.push('/')" color="indigo">
+                <v-btn @click="$router.push('/usuario')" color="indigo">
                   <span class="white--text px-4">Volver</span>
                 </v-btn>
               </v-card-actions>
@@ -75,7 +74,6 @@ import { validationMixin } from 'vuelidate';
 import {
   required,
   maxLength,
-  numeric,
   alpha,
 } from 'vuelidate/lib/validators';
 
@@ -88,65 +86,30 @@ export default {
       maxLength: maxLength(20),
       alpha,
     },
-    pais: {
-      /* republica checa (ejemplo de un pais de mas de 10 de longitud) */
+    tabla: {
       required,
       maxLength: maxLength(20),
       alpha,
     },
     select: { required },
-    checkbox: {
-      checked(val) {
-        return val;
-      },
-    },
-    provincia: {
-      required,
-      maxLength: maxLength(20),
-      alpha,
-    },
-    cp: {
-      required,
-      numeric,
-      maxLength: maxLength(5),
-      /* se limita porque los codigos postales son de 5 digitos */
-    },
-    ciudad: {
-      required,
-      maxLength: maxLength(20),
-      alpha,
-    },
-    calle: {
-      required,
-      maxLength: maxLength(20),
-      alpha,
-    },
   },
   data: () => ({
     loading: false,
     snackbar: false,
     dialog: false,
-    passwordShow: false,
     nombre: '',
-    pais: '',
-    provincia: '',
-    cp: '',
-    ciudad: '',
-    calle: '',
-    paises: [
-      'Esp',
-    /* actualmente solo ponemos españa porque solo se despliega aquí */
+    tabla: '',
+    tablas: [
+      'Usuario',
+      'Baños',
+      'Reseñas',
     ],
   }),
   methods: {
     clear() {
       this.dialog = true;
       this.nombre = '';
-      this.pais = '';
-      this.provincia = '';
-      this.cp = '';
-      this.ciudad = '';
-      this.calle = '';
+      this.tabla = '';
     },
     mensajeNombre() {
       const mensaje = [];
@@ -159,91 +122,41 @@ export default {
       }
       return mensaje;
     },
-    mensajePais() {
+    mensajeTabla() {
       const mensaje = [];
-      if (!this.$v.pais.alpha) {
+      if (!this.$v.tabla.alpha) {
         mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.pais.required && this.$v.pais.$dirty) {
+      } else if (!this.$v.tabla.required && this.$v.tabla.$dirty) {
         mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.pais.maxLength) {
-        mensaje.push('has llegado al limite');
-      }
-      return mensaje;
-    },
-    mensajeProvincia() {
-      const mensaje = [];
-      if (!this.$v.provincia.alpha) {
-        mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.provincia.required && this.$v.provincia.$dirty) {
-        mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.provincia.maxLength) {
-        mensaje.push('has llegado al limite');
-      }
-      return mensaje;
-    },
-    mensajeCp() {
-      const mensaje = [];
-      if (!this.$v.cp.numeric) {
-        mensaje.push('el campo solo admite caracteres alfabeticos');
-      } else if (!this.$v.cp.required && this.$v.cp.$dirty) {
-        mensaje.push('rellena el campo');
-      } else if (!this.$v.cp.maxLength) {
-        mensaje.push('has llegado al limite');
-      }
-      return mensaje;
-    },
-    mensajeCiudad() {
-      const mensaje = [];
-      if (!this.$v.ciudad.alpha) {
-        mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.ciudad.required && this.$v.ciudad.$dirty) {
-        mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.ciudad.maxLength) {
-        mensaje.push('has llegado al limite');
-      }
-      return mensaje;
-    },
-    mensajeCalle() {
-      const mensaje = [];
-      if (!this.$v.calle.alpha) {
-        mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.calle.required && this.$v.calle.$dirty) {
-        mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.calle.maxLength) {
+      } else if (!this.$v.tabla.maxLength) {
         mensaje.push('has llegado al limite');
       }
       return mensaje;
     },
     // metodo para enviar los datos a servidor
-    async registerUser() {
+    async enviarDatos() {
       // if para validar desde front los datos que vamos a mandar a la base de datos
       if (!this.$v.$error) {
         const response = await axios.post(
-          `${process.env.VUE_APP_SERVER_TOTAL_PATH}/banios`,
+          `${process.env.VUE_APP_SERVER_TOTAL_PATH}/usuario/eliminar`,
           {
             nombre: this.nombre,
-            pais: this.pais,
-            provincia: this.provincia,
-            cp: this.cp,
-            ciduad: this.ciudad,
-            calle: this.calle,
+            tabla: this.tabla,
           },
         );
         console.log(response);
-        console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/banios`);
+        console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/usuario/eliminar`);
         if (response.data.nombre) {
-          this.$router.push('/banios');
+          this.$router.push('/usuario/eliminar');
+          console.log('llega hasta aqui');
         } else {
           this.snackbar = true;
-          this.email = '';
-          this.password = '';
-          this.passwordC = '';
+          console.log('entra en el else');
         }
       } else {
         this.snackbar = true;
-        this.email = '';
-        this.password = '';
-        this.passwordC = '';
+        this.nombre = '';
+        this.tabla = '';
       }
     },
   },

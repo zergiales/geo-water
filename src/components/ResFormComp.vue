@@ -1,249 +1,188 @@
 <template>
-  <v-app>
-    <div class="login"></div>
+  <div>
     <v-main class="d-flex justify-center align-center">
-      <v-col cols="20" lg="4" class="mx-auto">
-        <v-card class="pa-4">
-          <div class="text-center">
-            <h2 class="indigo--text">Registro de usuario</h2>
-          </div>
-          <v-form @submit.prevent="registerUser" ref="form" method="post">
-            <v-card-text>
+      <v-row>
+        <v-col class="mx-auto">
+          <v-card class="pa-4">
+            <div class="text-center">
+              <h2 class="indigo--text">Hacer una reseña</h2>
+            </div>
+            <v-form @submit.prevent="enviarReseña" ref="form" method="post">
+              <v-card-text>
                 <v-text-field
-                v-model="nombre"
-                :counter="20"
-                label="Nombre"
-                placeholder="Juana"
-                required
-                @input="$v.nombre.$touch()"
-                :error-messages="mensajeNombre()"
-              />
+                  v-model="titulo"
+                  :counter="20"
+                  label="titulo"
+                  placeholder="titulo del baño"
+                  required
+                  @input="$v.titulo.$touch()"
+                  :error-messages="mensajeTitulo()"
+                />
+                <v-select
+                  v-model="baño"
+                  :items="baños"
+                  label="baño"
+                  required
+                  @change="$v.select.$touch()"
+                  @blur="$v.select.$touch()"
+                  :error-messages="mensajeBaño()"
+                  >
+                </v-select>
                 <v-text-field
-                v-model="apellido1"
-                :counter="20"
-                label="Apellido 1"
-                placeholder="De Arco"
-                required
-                @input="$v.apellido1.$touch()"
-                :error-messages="mensajeApellido1()"
-              />
-                <v-text-field
-                v-model="apellido2"
-                :counter="20"
-                :class="{error1:$v.apellido2.$error }"
-                label="Apellido 2"
-                placeholder="De Arco"
-                required
-                @input="$v.apellido2.$touch()"
-                :error-messages="mensajeApellido2()"
-              />
-              <v-text-field
-                v-model="email"
-                label="Inserte correo electronico"
-                placeholder="correo@gmail.com"
-                required
-                :error-messages="mensajeEmail()"
-              />
-              <v-text-field
-                v-model="password"
-                :type="passwordShow ? 'text' : 'password'"
-                label="Inserte contraseña"
-                placeholder="12345678"
-                :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
-                @click:append="passwordShow = !passwordShow"
-                required
-                :error-messages="mensajeContraseña()"
-              />
-              <v-text-field
-                v-model="passwordC"
-                :type="passwordShowC ? 'text' : 'password'"
-                label="Confrmar contraseña"
-                placeholder="12345678"
-                :append-icon="passwordShowC ? 'mdi-eye' : 'mdi-eye-off'"
-                @click:append="passwordShowC = !passwordShowC"
-                required
-                :error-messages="mensajeContraseñaConf()"
-              />
-            </v-card-text>
-            <v-card-actions class="justify-center d-flex flex-wrap mb-15">
-              <v-btn :disabled="$v.$invalid" type="submit" color="indigo" class="mb-3 mt-3">
-                <span class="white--text">Crear usuario</span>
-              </v-btn>
-              <v-btn  @click="clear()" color="indigo">
-                <span class="white--text px-4">Limpiar</span>
-              </v-btn>
-              <v-btn @click="$router.push('/')" color="indigo">
-                <span class="white--text px-4">Volver</span>
-              </v-btn>
-            </v-card-actions>
-          </v-form>
-        </v-card>
-      </v-col>
+                  v-model="descripcion"
+                  :counter="20"
+                  label="descripcion"
+                  placeholder="Guadalajara"
+                  required
+                  @input="$v.descripcion.$touch()"
+                  :error-messages="mensajeDescripcion()"
+                />
+             </v-card-text>
+              <v-card-actions class="justify-center d-flex flex-wrap mb-15">
+                <v-btn
+                  :disabled="$v.$invalid"
+                  type="submit"
+                  color="indigo"
+                  class="mb-3 mt-3"
+                >
+                  <span class="white--text">Insertar baño</span>
+                </v-btn>
+                <v-btn @click="clear()" color="indigo">
+                  <span class="white--text px-4">Limpiar</span>
+                </v-btn>
+                <v-btn @click="$router.push('/')" color="indigo">
+                  <span class="white--text px-4">Volver</span>
+                </v-btn>
+              </v-card-actions>
+            </v-form>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-main>
-        <v-dialog
+    <v-dialog
       v-model="dialog"
       persistent
       max-width="550"
-        transition="dialog-top-transition"
+      transition="dialog-top-transition"
     >
       <v-card color="indigo">
         <v-card-title class="text-h5 white--text">
-        Registro limpiado
+          Formulario limpio
         </v-card-title>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn class="white--text"
-            text
-            @click="dialog = false">
-            Vale
-          </v-btn>
+          <v-btn class="white--text" text @click="dialog = false"> Vale </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
     <v-snackbar top color="red" v-model="snackbar">
-      Registro incorrecto
+      Datos incorrectos
     </v-snackbar>
-  </v-app>
+  </div>
 </template>
 
 <script>
 import axios from 'axios';
 import { validationMixin } from 'vuelidate';
 import {
-  required, maxLength, minLength, email, alpha, sameAs,
+  required,
+  maxLength,
+  alpha,
 } from 'vuelidate/lib/validators';
 
 export default {
   name: 'App',
   mixins: [validationMixin],
   validations: {
-    nombre: {
-      required, maxLength: maxLength(20), alpha,
+    titulo: {
+      required,
+      maxLength: maxLength(20),
+      alpha,
     },
-    apellido1: {
-      required, maxLength: maxLength(20), alpha,
+    baño: {
+      required,
     },
-    apellido2: {
-      required, maxLength: maxLength(20), alpha,
+    descripcion: {
+      required,
+      maxLength: maxLength(140),
+      alpha,
     },
-    email: {
-      required, email, maxLength: maxLength(20),
-    },
-    password: { required, sameAs: sameAs('passwordC'), minLength: minLength(8) },
-    passwordC: { required, sameAs: sameAs('password'), minLength: minLength(8) },
   },
   data: () => ({
     loading: false,
     snackbar: false,
     dialog: false,
-    passwordShow: false,
-    nombre: '',
-    apellido1: '',
-    apellido2: '',
-    email: '',
-    password: '',
-    passwordC: '',
-    passwordShowC: false,
+    titulo: '',
+    baño: '',
+    descripcion: '',
+    baños: [
+      'baño1',
+      'baño2',
+      'baño3',
+    /* actualmente solo ponemos españa porque solo se despliega aquí */
+    ],
   }),
   methods: {
     clear() {
       this.dialog = true;
-      this.nombre = '';
-      this.apellido1 = '';
-      this.apellido2 = '';
-      this.email = '';
-      this.password = '';
-      this.passwordC = '';
+      this.titulo = '';
+      this.baño = '';
+      this.descripcion = '';
     },
-    mensajeNombre() {
+    mensajeTitulo() {
       const mensaje = [];
-      if (!this.$v.nombre.alpha) {
+      if (!this.$v.titulo.alpha) {
         mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.nombre.required && this.$v.nombre.$dirty) {
+      } else if (!this.$v.titulo.required && this.$v.titulo.$dirty) {
         mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.nombre.maxLength) {
+      } else if (!this.$v.titulo.maxLength) {
         mensaje.push('has llegado al limite');
       }
       return mensaje;
     },
-    mensajeApellido1() {
+    mensajeBaño() {
       const mensaje = [];
-      if (!this.$v.apellido1.alpha) {
+      if (!this.$v.baño.alpha) {
         mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.apellido1.required && this.$v.apellido1.$dirty) {
+      } else if (!this.$v.baño.required && this.$v.baño.$dirty) {
         mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.apellido1.maxLength) {
+      } else if (!this.$v.baño.maxLength) {
         mensaje.push('has llegado al limite');
       }
       return mensaje;
     },
-    mensajeApellido2() {
+    mensajeDescripcion() {
       const mensaje = [];
-      if (!this.$v.apellido2.alpha) {
+      if (!this.$v.descripcion.alpha) {
         mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.apellido2.required && this.$v.apellido2.$dirty) {
+      } else if (!this.$v.descripcion.required && this.$v.descripcion.$dirty) {
         mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.apellido2.maxLength) {
+      } else if (!this.$v.descripcion.maxLength) {
         mensaje.push('has llegado al limite');
-      }
-      return mensaje;
-    },
-    mensajeEmail() {
-      const mensaje = [];
-      if (!this.$v.email.email) {
-        mensaje.push('el campo solo admite caracteres alfabeticos');
-      } else if (!this.$v.email.required && this.$v.email.$dirty) {
-        mensaje.push('rellena el campo');
-      }
-      return mensaje;
-    },
-    mensajeContraseña() {
-      const mensaje = [];
-      if (!this.$v.password.minLength) {
-        mensaje.push('Se necesita minimo 8 caracteres');
-      } else if (!this.$v.email.required && this.$v.email.$dirty) {
-        mensaje.push('Rellena el campo');
-      }
-      return mensaje;
-    },
-    mensajeContraseñaConf() {
-      const mensaje = [];
-      if (!this.$v.passwordC.minLength) {
-        mensaje.push('Se necesitan minimo 8 caracteres');
-      } else if (!this.$v.passwordC.required && this.$v.passwordC.$dirty) {
-        mensaje.push('Rellena el campo');
       }
       return mensaje;
     },
     // metodo para enviar los datos a servidor
-    async registerUser() {
+    async enviarReseña() {
       // if para validar desde front los datos que vamos a mandar a la base de datos
       if (!this.$v.$error) {
         const response = await axios.post(
-          `${process.env.VUE_APP_SERVER_TOTAL_PATH}/register`,
+          `${process.env.VUE_APP_SERVER_TOTAL_PATH}/resenias`,
           {
-            nombre: this.nombre,
-            apellido1: this.apellido1,
-            apellido2: this.apellido2,
-            email: this.email,
-            contraseña: this.password,
-            contraseña2: this.passwordC,
+            titulo: this.titulo,
+            baño: this.baño,
+            descripcion: this.descripcion,
           },
         );
         console.log(response);
-        if (response.data.text) {
-          this.$router.push('/');
+        console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/banios`);
+        if (response.data.titulo) {
+          this.$router.push('/banios');
         } else {
           this.snackbar = true;
-          this.email = '';
-          this.password = '';
-          this.passwordC = '';
         }
       } else {
         this.snackbar = true;
-        this.email = '';
-        this.password = '';
-        this.passwordC = '';
       }
     },
   },

@@ -171,7 +171,6 @@ export default {
     loading: false,
     snackbar: false,
     dialog: false,
-    passwordShow: false,
     nombre: '',
     pais: '',
     provincia: '',
