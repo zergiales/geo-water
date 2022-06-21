@@ -2,7 +2,7 @@
 <template>
   <div>
     <SideBar></SideBar>
-    <div> {{ $store.state.msg }}</div>
+    <div> Hola &nbsp;{{ this.$store.getters.nombreUsuario }}!</div>
     <v-container fluid>
       <v-row>
         <v-col xl="6" lg="6" md="12" sm="12">
@@ -32,7 +32,6 @@ import MapaComponent from '@/components/MapaComponent.vue';
 import InfoComponent from '@/components/InfoComponent.vue';
 import TarjetasComponent from '@/components/TarjetasComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
-import axios from 'axios';
 
 export default {
   components: {
@@ -41,19 +40,6 @@ export default {
     InfoComponent,
     TarjetasComponent,
     FooterComponent,
-  },
-  setup: {
-    async getUser() {
-      const response = await axios.post(
-        `${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`,
-        {
-          email: this.email,
-          contraseña: this.password,
-        },
-      );
-      console.log(response);
-      console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`);
-    },
   },
 };
 </script>

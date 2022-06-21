@@ -6,21 +6,35 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    msg: 'nombre de usuario',
-    user: {
-
-    },
+    id_usuario: '',
+    nombre: '',
+    tipo: '',
   },
   getters: {
+    idUsuario: (state) => state.id_usuario,
+    nombreUsuario: (state) => state.nombre,
+    tipoUsuario: (state) => state.tipo,
   },
   mutations: {
-    CargarLogin(state, obj) {
-      this.state.user = obj;
+    mutActId(state, obj) {
+      this.state.id_usuario = obj;
+    },
+    mutActNombre(state, obj) {
+      this.state.nombre = obj;
+    },
+    mutActTipo(state, obj) {
+      this.state.tipo = obj;
     },
   },
   actions: {
-    actLogin({ commit }, obj) {
-      commit('mutLogin', obj);
+    actualizarIdAction({ commit }, obj) {
+      commit('mutActId', obj);
+    },
+    actualizarNombreAction({ commit }, obj) {
+      commit('mutActNombre', obj);
+    },
+    actualizarTipoAction({ commit }, obj) {
+      commit('mutActTipo', obj);
     },
   },
   modules: {

@@ -57,8 +57,13 @@
 <script>
 import SideBar from '@/components/SideBar.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
+import { mapState } from 'vuex';
 
 export default {
+
+  computed: {
+    ...mapState(['user']),
+  },
   components: {
     SideBar,
     FooterComponent,
@@ -89,6 +94,11 @@ export default {
       },
     ],
   }),
+  beforeMount() {
+    if (this.user.rol !== '1') {
+      this.$router.push('/home/unauthorized');
+    }
+  },
 };
 </script>
 <style>
