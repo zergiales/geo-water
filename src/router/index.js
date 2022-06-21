@@ -6,7 +6,6 @@ import Login from '../views/LoginView.vue';
 import Registro from '../views/RegistroView.vue';
 import Home from '../views/HomeView.vue';
 import resenias from '../views/ReseniasView.vue';
-import Ajustes from '../views/AjustesView.vue';
 import baños from '../views/BañosView.vue';
 import Usuario from '../views/UserView.vue';
 import Eliminar from '../views/EliminarView.vue';
@@ -36,11 +35,6 @@ const routes = [
     path: '/resenias',
     name: 'resenias',
     component: resenias,
-  },
-  {
-    path: '/ajustes',
-    name: 'ajustes',
-    component: Ajustes,
   },
   {
     path: '/banios',

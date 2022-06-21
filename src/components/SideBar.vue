@@ -1,27 +1,13 @@
 <template>
   <div
     class="sidebar" :class="isOpened ? 'open' : ''" :style="cssVars">
-    <div
-      class="logo-details"
-      style="margin: 6px 14px 0 ;"
-    >
-      <img
-        v-if="menuLogo"
-        :src="menuLogo"
-        alt="menu-logo"
-        class="menu-logo icon"
-      >
+    <div class="logo-details" style="margin: 6px 14px 0 ;">
       <div class="logo_name">
         {{ menuTitle }}
       </div>
-          <button
-            class="bx"
-            :class="isOpened ? 'bx-menu-alt-right' : 'bx-menu'"
-            id="btn"
-            @click="isOpened = !isOpened"
-          />
-    </div>
-
+          <button class="bx" :class="isOpened ? 'bx-menu-alt-right' : 'bx-menu'"
+          id="btn" @click="isOpened = !isOpened"/>
+      </div>
     <div class="menu">
       <div>
         <ul
@@ -34,10 +20,7 @@
           >
             <li>
               <router-link :to="{path:menuItem.link}">
-                <i
-                  class="bx"
-                  :class="menuItem.icon || 'bx-square-rounded'"
-                />
+                <i class="bx" :class="menuItem.icon || 'bx-square-rounded'"/>
                 <span class="links_name">{{ menuItem.name }}</span>
               </router-link>
               <span class="tooltip">{{ menuItem.tooltip || menuItem.name }}</span>
@@ -51,7 +34,7 @@
 
 <script>
 export default {
-  name: 'SidebarMenuAkahon',
+  name: 'SidebarGeoWater',
   props: {
     //! Menu settings
     isMenuOpen: {
@@ -61,14 +44,6 @@ export default {
     menuTitle: {
       type: String,
       default: 'Geo Water',
-    },
-    menuLogo: {
-      type: String,
-      default: '',
-    },
-    menuIcon: {
-      type: String,
-      // default: require('../assets/img/photo.jpg'),
     },
     esAbierto: {
       type: Boolean,
@@ -104,12 +79,6 @@ export default {
           name: 'reseñas',
           tooltip: 'reseñas',
           icon: 'bx-chat',
-        },
-        {
-          link: '/Ajustes',
-          name: 'Ajustes',
-          tooltip: 'Ajustes',
-          icon: 'bx-cog',
         },
         {
           link: '/Usuario',
@@ -170,6 +139,7 @@ export default {
   data() {
     return {
       isOpened: false,
+      /* cambiar el responsive */
     };
   },
   mounted() {
@@ -201,7 +171,6 @@ export default {
   },
 };
 </script>
-<!--Arreglar responsive del menu -->
 <style>
   @import url('https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css');
   * {
@@ -388,7 +357,6 @@ export default {
     .sidebar li .tooltip {
       display: none;
     }
-
 }
 
 </style>

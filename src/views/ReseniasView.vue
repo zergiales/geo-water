@@ -57,11 +57,7 @@ export default {
     ReseniasComponent,
     FooterComponent,
   },
-  data: () => ({
-    /* reglas del text area */
-    rules: [(v) => v.length <= 140 || 'Maximo 140 caracteres'],
-    value: 'Informa a los usuarios sobre tu experiencia',
-  }),
+
 };
 </script>
 <style scoped>

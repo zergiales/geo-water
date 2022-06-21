@@ -115,7 +115,6 @@ export default {
         },
       );
       console.log(response.data.email);
-      console.log(response.data.password);
       console.log(response.data.nombre);
       console.log(response.data.id);
       console.log(response.data.tipo);

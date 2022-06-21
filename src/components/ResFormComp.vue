@@ -2,13 +2,31 @@
   <div>
     <v-main class="d-flex justify-center align-center">
       <v-row>
-        <v-col class="mx-auto">
+        <v-col xl="6" lg="6" md="12" sm="12" class="mx-auto">
           <v-card class="pa-4">
             <div class="text-center">
-              <h2 class="indigo--text">Hacer una reseña</h2>
+              <h2 class="indigo--text">Realizar una reseña</h2>
             </div>
             <v-form @submit.prevent="enviarReseña" ref="form" method="post">
               <v-card-text>
+                <v-text-field
+                  v-model="id_baño"
+                  label="id del baños"
+                  placeholder="1, 2, 3"
+                  :counter="2"
+                  required
+                  @input="$v.id_baño.$touch()"
+                  :error-messages="mensajeId()"
+                />
+                <v-text-field
+                  v-model="id_usuario"
+                  label="inserte tu id"
+                  placeholder="1, 2"
+                  :counter="2"
+                  required
+                  @input="$v.id_usuario.$touch()"
+                  :error-messages="mensajeId()"
+                />
                 <v-text-field
                   v-model="titulo"
                   :counter="20"
@@ -18,16 +36,6 @@
                   @input="$v.titulo.$touch()"
                   :error-messages="mensajeTitulo()"
                 />
-                <v-select
-                  v-model="baño"
-                  :items="baños"
-                  label="baño"
-                  required
-                  @change="$v.select.$touch()"
-                  @blur="$v.select.$touch()"
-                  :error-messages="mensajeBaño()"
-                  >
-                </v-select>
                 <v-text-field
                   v-model="descripcion"
                   :counter="20"
@@ -112,15 +120,11 @@ export default {
     loading: false,
     snackbar: false,
     dialog: false,
+    id_usuario: '',
+    id_baño: '',
     titulo: '',
     baño: '',
     descripcion: '',
-    baños: [
-      'baño1',
-      'baño2',
-      'baño3',
-    /* actualmente solo ponemos españa porque solo se despliega aquí */
-    ],
   }),
   methods: {
     clear() {
