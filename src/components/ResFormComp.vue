@@ -13,32 +13,32 @@
                   v-model="id_baño"
                   label="id del baños"
                   placeholder="1, 2, 3"
-                  :counter="2"
+                  :counter="3"
                   required
                   @input="$v.id_baño.$touch()"
-                  :error-messages="mensajeId()"
+                  :error-messages="mensajeIdBaño()"
                 />
                 <v-text-field
                   v-model="id_usuario"
                   label="inserte tu id"
                   placeholder="1, 2"
-                  :counter="2"
+                  :counter="3"
                   required
                   @input="$v.id_usuario.$touch()"
-                  :error-messages="mensajeId()"
+                  :error-messages="mensajeIdUsuario()"
                 />
                 <v-text-field
                   v-model="titulo"
                   :counter="20"
                   label="titulo"
-                  placeholder="titulo del baño"
+                  placeholder="titulo reseña"
                   required
                   @input="$v.titulo.$touch()"
                   :error-messages="mensajeTitulo()"
                 />
                 <v-text-field
                   v-model="descripcion"
-                  :counter="20"
+                  :counter="140"
                   label="descripcion"
                   placeholder="Guadalajara"
                   required
@@ -53,7 +53,7 @@
                   color="indigo"
                   class="mb-3 mt-3"
                 >
-                  <span class="white--text">Insertar baño</span>
+                  <span class="white--text">Insertar reseña</span>
                 </v-btn>
                 <v-btn @click="clear()" color="indigo">
                   <span class="white--text px-4">Limpiar</span>
@@ -96,6 +96,7 @@ import {
   required,
   maxLength,
   alpha,
+  numeric,
 } from 'vuelidate/lib/validators';
 
 export default {
@@ -107,9 +108,8 @@ export default {
       maxLength: maxLength(20),
       alpha,
     },
-    baño: {
-      required,
-    },
+    id_usuario: { required, numeric, maxLength: maxLength(3) },
+    id_baño: { required, numeric, maxLength: maxLength(3) },
     descripcion: {
       required,
       maxLength: maxLength(140),
@@ -123,7 +123,6 @@ export default {
     id_usuario: '',
     id_baño: '',
     titulo: '',
-    baño: '',
     descripcion: '',
   }),
   methods: {
@@ -131,6 +130,8 @@ export default {
       this.dialog = true;
       this.titulo = '';
       this.baño = '';
+      this.id_usuario = '';
+      this.id_baño = '';
       this.descripcion = '';
     },
     mensajeTitulo() {
@@ -144,13 +145,24 @@ export default {
       }
       return mensaje;
     },
-    mensajeBaño() {
+    mensajeIdUsuario() {
       const mensaje = [];
-      if (!this.$v.baño.alpha) {
+      if (!this.$v.id_usuario.numeric) {
         mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.baño.required && this.$v.baño.$dirty) {
+      } else if (!this.$v.id_usuario.required && this.$v.id_usuario.$dirty) {
         mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.baño.maxLength) {
+      } else if (!this.$v.id_usuario.maxLength) {
+        mensaje.push('has llegado al limite');
+      }
+      return mensaje;
+    },
+    mensajeIdBaño() {
+      const mensaje = [];
+      if (!this.$v.id_baño.numeric) {
+        mensaje.push('El campo solo admite caracteres alfabéticos');
+      } else if (!this.$v.id_baño.required && this.$v.id_baño.$dirty) {
+        mensaje.push('No has rellenado el campo');
+      } else if (!this.$v.id_baño.maxLength) {
         mensaje.push('has llegado al limite');
       }
       return mensaje;
