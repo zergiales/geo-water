@@ -19,23 +19,12 @@
           </div>
         </v-col>
       </v-row>
-      <v-row class="fondoBaño">
+      <v-row>
         <v-col xl="6" lg="6" md="12" sm="12">
           <RegistrarBanio></RegistrarBanio>
         </v-col>
         <v-col xl="6" lg="6" md="12" sm="12">
-          <v-card>
-            <h3 class="text-center indigo--text">¿Qúe tengo que hacer para insertar un baño?</h3>
-            <div class="text-center fade-scroll d-flex justify-center align-center">
-              <p class="text--center">Si donde te encuentras , existe un baño que cumpla
-              los requisitos establecidos podrá insertarse a nuestra base de datos.
-              <br>rellene el formulario y acontinuacion si se ha rellenado todos los campos
-              estará registrado
-              </p>
-              <img src="@/assets/img/logos/Logo.2.png" alt=""
-               width="40%" height="40%" class="pa-5">
-            </div>
-          </v-card>
+            <MapaComponent></MapaComponent>
         </v-col>
       </v-row>
       <v-row>
@@ -56,6 +45,7 @@ import SideBar from '@/components/SideBar.vue';
 import RegistrarBanio from '@/components/RegistrarBanio.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 import MisBañosComponent from '@/components/MisBañosComponent.vue';
+import MapaComponent from '@/components/MapaComponent.vue';
 
 export default {
   components: {
@@ -63,11 +53,11 @@ export default {
     RegistrarBanio,
     MisBañosComponent,
     FooterComponent,
+    MapaComponent,
   },
 };
 </script>
-<styl,
-    MisBañosComponente>
+<style>
   @import '../assets/css/style.css';
   @import '../assets/css/baños.css';
 </style>

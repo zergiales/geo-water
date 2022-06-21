@@ -11,7 +11,7 @@
               <v-card-text>
                 <v-text-field
                   v-model="id_baño"
-                  label="id del baños"
+                  label="Id del baños"
                   placeholder="1, 2, 3"
                   :counter="3"
                   required
@@ -20,7 +20,7 @@
                 />
                 <v-text-field
                   v-model="id_usuario"
-                  label="inserte tu id"
+                  label="Inserte tu id"
                   placeholder="1, 2"
                   :counter="3"
                   required
@@ -30,21 +30,22 @@
                 <v-text-field
                   v-model="titulo"
                   :counter="20"
-                  label="titulo"
-                  placeholder="titulo reseña"
+                  label="Titulo"
+                  placeholder="Titulo"
                   required
                   @input="$v.titulo.$touch()"
                   :error-messages="mensajeTitulo()"
                 />
-                <v-text-field
-                  v-model="descripcion"
+                <v-textarea
+                  v-model="descripción"
                   :counter="140"
-                  label="descripcion"
-                  placeholder="Guadalajara"
+                  label="Descripcion"
+                  placeholder="Pon lo que quieras decir"
                   required
                   @input="$v.descripcion.$touch()"
                   :error-messages="mensajeDescripcion()"
-                />
+                  >
+                 </v-textarea>
              </v-card-text>
               <v-card-actions class="justify-center d-flex flex-wrap mb-15">
                 <v-btn
@@ -133,6 +134,37 @@ export default {
       this.id_usuario = '';
       this.id_baño = '';
       this.descripcion = '';
+    },
+    async getUser() {
+      const response = await axios.post(
+        `${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`,
+        {
+          email: this.email,
+          contraseña: this.password,
+        },
+      );
+      console.log(response.data.email);
+      console.log(response.data.nombre);
+      console.log(response.data.id);
+      console.log(response.data.tipo);
+      console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/banios`);
+      if (response.data.id_usuario) {
+        setTimeout(() => {
+          this.snackbarLogin = true;
+          this.loading = true;
+          /* datos del usuario que recogemos */
+          this.actualizarIdAction(response.data.id);
+          this.actualizarNombreAction(response.data.nombre);
+          this.actualizarTipoAction(response.data.tipo);
+        }, 1000);
+        setTimeout(() => {
+          this.$router.push('/home');
+        }, 2000);
+      } else {
+        this.dialog = true;
+        this.email = '';
+        this.password = '';
+      }
     },
     mensajeTitulo() {
       const mensaje = [];

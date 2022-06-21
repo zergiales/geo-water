@@ -66,17 +66,12 @@
                 label="¿Das permiso a Geo water para acceder a tu posición en tiempo real?"
                 required @change="$v.checkbox.$touch()" @blur="$v.checkbox.$touch()"
                 ></v-checkbox>
-                <v-checkbox v-model="checkbox"
-                label="Acepto los terminos y condiciones de la empresa"
-                required @change="$v.checkbox.$touch()" @blur="$v.checkbox.$touch()"
-                ></v-checkbox>
              </v-card-text>
-              <v-card-actions class="justify-center d-flex flex-wrap mb-15">
+              <v-card-actions class="justify-center d-flex flex-wrap">
                 <v-btn
                   :disabled="$v.$invalid"
                   type="submit"
                   color="indigo"
-                  class="mb-3 mt-3"
                 >
                   <span class="white--text">Insertar baño</span>
                 </v-btn>
