@@ -53,9 +53,9 @@ export default {
       type: String,
       default: '250px',
     },
-    menucerrado: {
+    menuCerrado: {
       type: String,
-      default: '0px',
+      default: '-250px',
     },
 
     //! Menu items

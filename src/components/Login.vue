@@ -3,7 +3,7 @@
     <v-main class="fondo">
     <v-row>
       <v-col sg="9" lg="5" md="8" sm="5" xs="5" class="mx-auto">
-        <v-card class="tarjeta espacio elevation-10">
+        <v-card class="tarjeta elevation-10">
           <div class=" pt-5 text-center">
             <v-avatar size="100" color="indigo lighten-4">
               <!--to do: poner imagen-->
@@ -13,15 +13,16 @@
           </div>
           <v-form @submit.prevent="getUser" ref="form">
             <v-card-text>
+              <!--email-->
               <v-text-field
-                class="pt-1"
-                v-model="email"
-                label="Correo electrónico"
-                placeholder="correo@gmail.com"
-                required
-                prepend-inner-icon="mdi-account"
-                :error-messages="mensajeEmail()"
-                />
+              class="pt-1"
+              v-model="email"
+              label="Correo electrónico"
+              placeholder="correo@gmail.com"
+              required
+              prepend-inner-icon="mdi-account"
+              :error-messages="mensajeEmail()"/>
+              <!--hueco password-->
               <v-text-field
               class="pt-1 titulillo"
               v-model="password"
@@ -29,36 +30,36 @@
               label="Contraseña"
               prepend-inner-icon="mdi-key"
               :append-icon="passwordShow ? 'mdi-eye' : 'mdi-eye-off'"
-              placeholder="12345678"
+              placeholder="8 caracteres"
               @click:append="passwordShow = !passwordShow"
               required
               :error-messages="mensajeContraseña()"
               />
               <v-row class="texto pl-10">
-                <v-col col="6" lg="6" md="6" sm="12">¿Aún no estas registrado?</v-col>
-                <v-col class="enlace" col="6" lg="6" md="6" sm="12"
-                @click="$router.push('/registro')">Registrate</v-col>
+                <v-col sg="6" lg="6" md="6" sm="12">¿Aún no estas registrado?</v-col>
+                <v-col class="enlace" sg="6" lg="6" md="6" sm="12"
+                @click="$router.push('/registro')">Regístrate</v-col>
               </v-row>
             </v-card-text>
             <v-card-actions class="justify-center">
-              <v-btn :loading="loading" type="submit" color="indigo">
+            <!--cambio de "loading" por cargando-->
+              <v-btn :loading="cargando" type="submit" color="indigo">
                 <span class="white--text px-8">Iniciar sesión</span>
               </v-btn>
             </v-card-actions>
           </v-form>
         </v-card>
         <!--ventana que sale si nos equivocamos-->
-        <v-dialog v-model="dialog" persistent max-width="550"
-              color="red"
+        <v-dialog v-model="dialog" color="red" persistent max-width="550"
                transition="dialog-top-transition">
           <v-card>
             <v-card-title class="text-h5">
               El usuario o la contraseña son erroneos
             </v-card-title>
-            <v-card-text>Vuelve a insertar la contraseña o el usuario</v-card-text>
+            <v-card-text>Prueba de nuevo</v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="secondary" text @click="dialog = false">ok
+              <v-btn color="secondary" text @click="dialog = false"> Vale
               </v-btn>
             </v-card-actions>
           </v-card>
