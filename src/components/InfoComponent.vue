@@ -27,7 +27,7 @@ export default {
     items: [
       {
         color: '#64AEFF',
-        title: 'Baños localizados',
+        title: 'Baños insertados',
         number: '3',
       },
       {
@@ -37,7 +37,7 @@ export default {
       },
       {
         color: '#2E3A82',
-        title: 'Usuarios registrados',
+        title: 'id del usuario',
         number: '3',
       },
     ],

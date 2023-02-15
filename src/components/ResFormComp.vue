@@ -2,41 +2,50 @@
   <div>
     <v-main class="d-flex justify-center align-center">
       <v-row>
-        <v-col class="mx-auto">
+        <v-col xl="6" lg="6" md="12" sm="12" class="mx-auto">
           <v-card class="pa-4">
             <div class="text-center">
-              <h2 class="indigo--text">Hacer una reseña</h2>
+              <h2 class="indigo--text">Realizar una reseña</h2>
             </div>
             <v-form @submit.prevent="enviarReseña" ref="form" method="post">
               <v-card-text>
                 <v-text-field
+                  v-model="id_baño"
+                  label="Id del baños"
+                  placeholder="1, 2, 3"
+                  :counter="3"
+                  required
+                  @input="$v.id_baño.$touch()"
+                  :error-messages="mensajeIdBaño()"
+                />
+                <v-text-field
+                  v-model="id_usuario"
+                  label="Inserte tu id"
+                  placeholder="1, 2"
+                  :counter="3"
+                  required
+                  @input="$v.id_usuario.$touch()"
+                  :error-messages="mensajeIdUsuario()"
+                />
+                <v-text-field
                   v-model="titulo"
                   :counter="20"
-                  label="titulo"
-                  placeholder="titulo del baño"
+                  label="Titulo"
+                  placeholder="Titulo"
                   required
                   @input="$v.titulo.$touch()"
                   :error-messages="mensajeTitulo()"
                 />
-                <v-select
-                  v-model="baño"
-                  :items="baños"
-                  label="baño"
-                  required
-                  @change="$v.select.$touch()"
-                  @blur="$v.select.$touch()"
-                  :error-messages="mensajeBaño()"
-                  >
-                </v-select>
-                <v-text-field
-                  v-model="descripcion"
-                  :counter="20"
-                  label="descripcion"
-                  placeholder="Guadalajara"
+                <v-textarea
+                  v-model="descripción"
+                  :counter="140"
+                  label="Descripcion"
+                  placeholder="Pon lo que quieras decir"
                   required
                   @input="$v.descripcion.$touch()"
                   :error-messages="mensajeDescripcion()"
-                />
+                  >
+                 </v-textarea>
              </v-card-text>
               <v-card-actions class="justify-center d-flex flex-wrap mb-15">
                 <v-btn
@@ -45,7 +54,7 @@
                   color="indigo"
                   class="mb-3 mt-3"
                 >
-                  <span class="white--text">Insertar baño</span>
+                  <span class="white--text">Insertar reseña</span>
                 </v-btn>
                 <v-btn @click="clear()" color="indigo">
                   <span class="white--text px-4">Limpiar</span>
@@ -88,6 +97,7 @@ import {
   required,
   maxLength,
   alpha,
+  numeric,
 } from 'vuelidate/lib/validators';
 
 export default {
@@ -99,9 +109,8 @@ export default {
       maxLength: maxLength(20),
       alpha,
     },
-    baño: {
-      required,
-    },
+    id_usuario: { required, numeric, maxLength: maxLength(3) },
+    id_baño: { required, numeric, maxLength: maxLength(3) },
     descripcion: {
       required,
       maxLength: maxLength(140),
@@ -112,22 +121,50 @@ export default {
     loading: false,
     snackbar: false,
     dialog: false,
+    id_usuario: '',
+    id_baño: '',
     titulo: '',
-    baño: '',
     descripcion: '',
-    baños: [
-      'baño1',
-      'baño2',
-      'baño3',
-    /* actualmente solo ponemos españa porque solo se despliega aquí */
-    ],
   }),
   methods: {
     clear() {
       this.dialog = true;
       this.titulo = '';
       this.baño = '';
+      this.id_usuario = '';
+      this.id_baño = '';
       this.descripcion = '';
+    },
+    async getUser() {
+      const response = await axios.post(
+        `${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`,
+        {
+          email: this.email,
+          contraseña: this.password,
+        },
+      );
+      console.log(response.data.email);
+      console.log(response.data.nombre);
+      console.log(response.data.id);
+      console.log(response.data.tipo);
+      console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/banios`);
+      if (response.data.id_usuario) {
+        setTimeout(() => {
+          this.snackbarLogin = true;
+          this.loading = true;
+          /* datos del usuario que recogemos */
+          this.actualizarIdAction(response.data.id);
+          this.actualizarNombreAction(response.data.nombre);
+          this.actualizarTipoAction(response.data.tipo);
+        }, 1000);
+        setTimeout(() => {
+          this.$router.push('/home');
+        }, 2000);
+      } else {
+        this.dialog = true;
+        this.email = '';
+        this.password = '';
+      }
     },
     mensajeTitulo() {
       const mensaje = [];
@@ -140,13 +177,24 @@ export default {
       }
       return mensaje;
     },
-    mensajeBaño() {
+    mensajeIdUsuario() {
       const mensaje = [];
-      if (!this.$v.baño.alpha) {
+      if (!this.$v.id_usuario.numeric) {
         mensaje.push('El campo solo admite caracteres alfabéticos');
-      } else if (!this.$v.baño.required && this.$v.baño.$dirty) {
+      } else if (!this.$v.id_usuario.required && this.$v.id_usuario.$dirty) {
         mensaje.push('No has rellenado el campo');
-      } else if (!this.$v.baño.maxLength) {
+      } else if (!this.$v.id_usuario.maxLength) {
+        mensaje.push('has llegado al limite');
+      }
+      return mensaje;
+    },
+    mensajeIdBaño() {
+      const mensaje = [];
+      if (!this.$v.id_baño.numeric) {
+        mensaje.push('El campo solo admite caracteres alfabéticos');
+      } else if (!this.$v.id_baño.required && this.$v.id_baño.$dirty) {
+        mensaje.push('No has rellenado el campo');
+      } else if (!this.$v.id_baño.maxLength) {
         mensaje.push('has llegado al limite');
       }
       return mensaje;

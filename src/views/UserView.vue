@@ -27,7 +27,7 @@
       </v-row>
       <v-row>
         <v-col v-for="item in items" :key="item"
-         lg="4" xl="4" md="6" sm="12" class="align-center justify-content-center white--text
+         lg="6" xl="6" md="6" sm="12" class="align-center justify-content-center white--text
           ">
           <div class="cont con1">
             <div class="box box1">
@@ -48,10 +48,10 @@
           </div>
         </v-col>
       </v-row>
-      <footer class="pt-9">
+    </v-container>
+    <footer class="pt-9">
       <FooterComponent></FooterComponent>
     </footer>
-    </v-container>
   </div>
 </template>
 <script>
@@ -77,7 +77,7 @@ export default {
         titulo: 'Busqueda',
         descripcion1: 'Realiza una busqueda',
         descripcion2: 'accede a los datos de las bases de usuario,baños y reseñas',
-        url: '/Usuario/busqueda',
+        url: '/Usuario/php/consultar.php',
         boton: 'Realizar busqueda',
       },
       {

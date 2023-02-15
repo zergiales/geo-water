@@ -79,6 +79,7 @@ import { validationMixin } from 'vuelidate';
 import {
   required, maxLength, minLength, email,
 } from 'vuelidate/lib/validators';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'App',
@@ -98,6 +99,13 @@ export default {
     password: '',
   }),
   methods: {
+
+    ...mapActions([
+      'actualizarIdAction',
+      'actualizarNombreAction',
+      'actualizarTipoAction',
+    ]),
+
     async getUser() {
       const response = await axios.post(
         `${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`,
@@ -106,13 +114,19 @@ export default {
           contraseña: this.password,
         },
       );
-      console.log(this.email);
-      console.log(this.password);
+      console.log(response.data.email);
+      console.log(response.data.nombre);
+      console.log(response.data.id);
+      console.log(response.data.tipo);
       console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`);
       if (response.data.nombre) {
         setTimeout(() => {
           this.snackbarLogin = true;
           this.loading = true;
+          /* datos del usuario que recogemos */
+          this.actualizarIdAction(response.data.id);
+          this.actualizarNombreAction(response.data.nombre);
+          this.actualizarTipoAction(response.data.tipo);
         }, 1000);
         setTimeout(() => {
           this.$router.push('/home');
