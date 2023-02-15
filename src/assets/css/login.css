@@ -26,17 +26,36 @@
 }
 /*TO DO: arreglar responsive de movil*/
 /*Responsive para movil*/
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 844px) {
   .tarjeta {
-    width: 200px;
-    height: 100%;
+    width: 300px;
+    height: 500px;
     padding-bottom: 10px;
+    padding-left: 1px;
+    left: 90%;
+    margin-left: -310px; /* Half of the width */
+
+
+  }
+  .fondo{
+    background-color:white;
+  }
+  *{
+    padding: 2px;
   }
 }
 /*Responsive para tablet*/
 @media screen and (min-width: 640px) and (max-width: 1280px) {
   .tarjeta {
     width: 100%;
+    height: 100%;
+    padding-bottom: 10px;
+    padding-left: 1px;
+    left: 90%;
+    margin-left: -310px; /* Half of the width */
+  }
+  *{
+    padding: 2px;
   }
 }
 @media screen and (min-width: 1280px) {

@@ -2,8 +2,8 @@
   <v-app>
     <v-main class="fondo">
     <v-row>
-      <v-col cols="4" md="4" lg="4" sm="3" class="mx-auto">
-        <v-card class="tarjeta elevation-10">
+      <v-col sg="9" lg="5" md="8" sm="5" xs="5" class="mx-auto">
+        <v-card class="tarjeta espacio elevation-10">
           <div class=" pt-5 text-center">
             <v-avatar size="100" color="indigo lighten-4">
               <!--to do: poner imagen-->
