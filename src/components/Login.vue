@@ -50,7 +50,7 @@
           </v-form>
         </v-card>
         <!--ventana que sale si nos equivocamos-->
-        <v-dialog v-model="dialog" color="red" persistent max-width="550"
+        <v-dialog v-model="dialog" color="indigo" persistent max-width="550"
                transition="dialog-top-transition">
           <v-card>
             <v-card-title class="text-h5">
