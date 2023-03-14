@@ -68,14 +68,13 @@
                 ></v-checkbox>
              </v-card-text>
               <v-card-actions class="justify-center d-flex flex-wrap">
-                <v-btn :disabled="$v.$invalid" type="submit" color="indigo" class="mb-3 mt-3">
+                <v-btn type="submit" color="indigo" class="mb-3 mt-3">
+                  <!-- <v-btn :disabled="$v.$invalid" type="submit" color="indigo"
+                  class="mb-3 mt-3">-->
                   <span class="white--text">Insertar</span>
                 </v-btn>
                 <v-btn @click="clear()" color="indigo">
                   <span class="white--text px-4">Limpiar</span>
-                </v-btn>
-                <v-btn @click="$router.push('/')" color="indigo">
-                  <span class="white--text px-4">Volver</span>
                 </v-btn>
               </v-card-actions>
             </v-form>
@@ -268,7 +267,7 @@ export default {
         console.log(response);// no saca todos los datos
         console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/banios`);
         if (response.data.nombre) {
-          this.$router.push('/banios');
+          this.$router.push('/home');
         } else {
           this.snackbar = true;
           this.nombre = '';
