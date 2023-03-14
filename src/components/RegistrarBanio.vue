@@ -68,7 +68,7 @@
                 ></v-checkbox>
              </v-card-text>
               <v-card-actions class="justify-center d-flex flex-wrap">
-                <v-btn :disabled="$v.$invalid" type="submit" color="indigo" class="mb-3 mt-3"
+                <v-btn :disabled="$v.$invalid" type="submit" color="indigo" class="mb-3 mt-3">
                   <span class="white--text">Insertar</span>
                 </v-btn>
                 <v-btn @click="clear()" color="indigo">
@@ -171,7 +171,10 @@ export default {
     calle: '',
     paises: [
       'Esp',
-    /* actualmente solo ponemos españa porque solo se despliega aquí */
+      'Portugal',
+      'Andorra',
+      'Francia',
+    /* actualmente solo españa que es nuestro mercado principal */
     ],
   }),
   methods: {
