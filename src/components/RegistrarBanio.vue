@@ -262,6 +262,7 @@ export default {
             cp: this.cp,
             ciduad: this.ciudad,
             calle: this.calle,
+            checked: this.checked,
           },
         );
         console.log(response);// no saca todos los datos
@@ -276,6 +277,7 @@ export default {
           this.cp = '';
           this.ciudad = '';
           this.calle = '';
+          this.checked = '';
         }
       } else {
         this.snackbar = true;
@@ -285,6 +287,7 @@ export default {
         this.cp = '';
         this.ciudad = '';
         this.calle = '';
+        this.checked = '';
       }
     },
   },
