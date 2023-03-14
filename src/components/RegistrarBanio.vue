@@ -264,7 +264,7 @@ export default {
             calle: this.calle,
           },
         );
-        console.log(response);
+        console.log(response);// no saca todos los datos
         console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/banios`);
         if (response.data.nombre) {
           this.$router.push('/banios');
