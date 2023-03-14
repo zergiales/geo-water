@@ -62,9 +62,9 @@
                   @input="$v.calle.$touch()"
                   :error-messages="mensajeCalle()"
                 />
-                <v-checkbox v-model="checkbox"
+                <v-checkbox v-model="checked"
                 label="¿Das permiso a Geo water para acceder a tu posición en tiempo real?"
-                required @change="$v.checkbox.$touch()" @blur="$v.checkbox.$touch()"
+                required @change="$v.checked.$touch()" @blur="$v.checked.$touch()"
                 ></v-checkbox>
              </v-card-text>
               <v-card-actions class="justify-center d-flex flex-wrap">
@@ -99,7 +99,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-snackbar top color="red" v-model="snackbar">
+    <v-snackbar top color="blue" v-model="snackbar">
       Datos incorrectos
     </v-snackbar>
   </div>
@@ -109,10 +109,7 @@
 import axios from 'axios';
 import { validationMixin } from 'vuelidate';
 import {
-  required,
-  maxLength,
-  numeric,
-  alpha,
+  required, maxLength, numeric, alpha,
 } from 'vuelidate/lib/validators';
 
 export default {
@@ -125,13 +122,12 @@ export default {
       alpha,
     },
     pais: {
-      /* republica checa (ejemplo de un pais de mas de 10 de longitud) */
       required,
       maxLength: maxLength(20),
       alpha,
     },
     select: { required },
-    checkbox: {
+    checked: {
       required,
       checked(val) {
         return val;
@@ -169,12 +165,12 @@ export default {
     cp: '',
     ciudad: '',
     calle: '',
+    /* actualmente solo españa que es nuestro mercado principal */
     paises: [
       'Esp',
       'Portugal',
       'Andorra',
       'Francia',
-    /* actualmente solo españa que es nuestro mercado principal */
     ],
   }),
   methods: {
