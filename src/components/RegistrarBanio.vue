@@ -68,12 +68,8 @@
                 ></v-checkbox>
              </v-card-text>
               <v-card-actions class="justify-center d-flex flex-wrap">
-                <v-btn
-                  :disabled="$v.$invalid"
-                  type="submit"
-                  color="indigo"
-                >
-                  <span class="white--text">Insertar baño</span>
+                <v-btn :disabled="$v.$invalid" type="submit" color="indigo" class="mb-3 mt-3"
+                  <span class="white--text">Insertar</span>
                 </v-btn>
                 <v-btn @click="clear()" color="indigo">
                   <span class="white--text px-4">Limpiar</span>
@@ -136,6 +132,7 @@ export default {
     },
     select: { required },
     checkbox: {
+      required,
       checked(val) {
         return val;
       },
@@ -254,7 +251,7 @@ export default {
       return mensaje;
     },
     // metodo para enviar los datos a servidor
-    async registerUser() {
+    async registerBanio() {
       // if para validar desde front los datos que vamos a mandar a la base de datos
       if (!this.$v.$error) {
         const response = await axios.post(
@@ -274,15 +271,21 @@ export default {
           this.$router.push('/banios');
         } else {
           this.snackbar = true;
-          this.email = '';
-          this.password = '';
-          this.passwordC = '';
+          this.nombre = '';
+          this.pais = '';
+          this.provincia = '';
+          this.cp = '';
+          this.ciudad = '';
+          this.calle = '';
         }
       } else {
         this.snackbar = true;
-        this.email = '';
-        this.password = '';
-        this.passwordC = '';
+        this.nombre = '';
+        this.pais = '';
+        this.provincia = '';
+        this.cp = '';
+        this.ciudad = '';
+        this.calle = '';
       }
     },
   },
