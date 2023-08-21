@@ -1,4 +1,4 @@
-# Aplicacion de geolocalizacion de baños
+# Aplicacion de geolocalizaciÓn de baños
 > esta app ha sido desarrollada para llevar a cabo el desarrollo de una app donde
 > pueda incluir y buscar baños
 ## Montaje de la aplicacion en tu IDE
