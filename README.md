@@ -22,4 +22,4 @@ npm run lint
 ![image](/img/Login.png)
 
 ## Register page
-![image](/img/Register.png.png)
+![image](/img/Register.png)
