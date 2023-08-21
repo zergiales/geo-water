@@ -1,4 +1,4 @@
-# Aplicacion de geolocalizaciÓn de baños
+# Aplicacion de geolocalización de baños
 > esta app ha sido desarrollada para llevar a cabo el desarrollo de una app donde
 > pueda incluir y buscar baños
 ## Montaje de la aplicacion en tu IDE
@@ -19,5 +19,7 @@ npm run lint
 ```
 
 ## Login page
-![image](/img/image.png)
+![image](/img/Login.png)
 
+## Register page
+![image](/img/Register.png.png)
