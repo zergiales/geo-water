@@ -1,5 +1,6 @@
-# portafolio
-
+# Aplicacion de geolocalizacion de baños
+> esta app ha sido desarrollada para llevar a cabo el desarrollo de una app donde
+> pueda incluir y buscar baños
 ## Project setup
 ```
 npm install
@@ -22,6 +23,4 @@ npm run lint
 
 ### Login page
 ![image](/img/image.png)
-### Problema de responsive
-```
-solucionar responsive 
+
