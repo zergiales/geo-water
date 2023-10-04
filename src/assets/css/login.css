@@ -1,6 +1,5 @@
 .tarjeta {
-  width: 100%;
-  height: 450px
+  width: 50%;
 }
 .texto {
   font-size: 14px;
@@ -19,11 +18,13 @@
   color: greenyellow;
 }
 .fondo {
-  background-color: #e1e1e1;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+
+
 /*TO DO: arreglar responsive de movil*/
 /*Responsive para movil*/
 @media screen and (max-width: 844px) {
@@ -34,8 +35,6 @@
     padding-left: 1px;
     left: 90%;
     margin-left: -310px; /* Half of the width */
-
-
   }
   .fondo{
     background-color:white;
