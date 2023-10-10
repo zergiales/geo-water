@@ -43,7 +43,7 @@
             </v-card-text>
             <v-card-actions class="justify-center">
             <!--cambio de "loading" por cargando-->
-              <v-btn :loading="cargando" type="submit" color="indigo">
+              <v-btn :loading="loading" type="submit" color="indigo">
                 <span class="white--text px-8">Iniciar sesión</span>
               </v-btn>
             </v-card-actions>
@@ -115,11 +115,11 @@ export default {
           contraseña: this.password,
         },
       );
-      console.log(response.data.email);
-      console.log(response.data.nombre);
-      console.log(response.data.id);
-      console.log(response.data.tipo);
-      console.log(`${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`);
+      console.log(`mensaje de si pilla el email: ${response.data.email}`);
+      console.log(`mensaje de si pilla el nombre: ${response.data.nombre}`);
+      console.log(`mensaje de si pilla el id: ${response.data.id}`);
+      console.log(`mensaje de si pilla el tipo: ${response.data.tipo}`);
+      console.log(`pilla la direccion ${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`);
       if (response.data.nombre) {
         setTimeout(() => {
           this.snackbarLogin = true;
@@ -159,7 +159,3 @@ export default {
   },
 };
 </script>
-<style>
-@import '../assets/css/style.css';
-@import '../assets/css/login.css';
-</style>

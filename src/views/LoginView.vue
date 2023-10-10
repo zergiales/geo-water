@@ -13,4 +13,5 @@ export default {
 </script>
 <style scooped>
 @import '../assets/css/style.css';
+@import '../assets/css/login.css';
 </style>
