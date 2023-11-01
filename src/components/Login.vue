@@ -115,11 +115,11 @@ export default {
           contraseña: this.password,
         },
       );
+      console.log(`pilla la direccion ${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`);
       console.log(`mensaje de si pilla el email: ${response.data.email}`);
       console.log(`mensaje de si pilla el nombre: ${response.data.nombre}`);
       console.log(`mensaje de si pilla el id: ${response.data.id}`);
       console.log(`mensaje de si pilla el tipo: ${response.data.tipo}`);
-      console.log(`pilla la direccion ${process.env.VUE_APP_SERVER_TOTAL_PATH}/login`);
       if (response.data.nombre) {
         setTimeout(() => {
           this.snackbarLogin = true;
