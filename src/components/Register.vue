@@ -9,6 +9,7 @@
           </div>
           <v-form @submit.prevent="registerUser" ref="form" method="post">
             <v-card-text>
+              <!--Nombre de usuario-->
                 <v-text-field
                 v-model="nombre"
                 :counter="20"
@@ -18,6 +19,7 @@
                 @input="$v.nombre.$touch()"
                 :error-messages="mensajeNombre()"
               />
+              <!-- apellido1-->
                 <v-text-field
                 v-model="apellido1"
                 :counter="20"
@@ -27,6 +29,7 @@
                 @input="$v.apellido1.$touch()"
                 :error-messages="mensajeApellido1()"
               />
+              <!--apellido2-->
                 <v-text-field
                 v-model="apellido2"
                 :counter="20"
@@ -231,6 +234,7 @@ export default {
           },
         );
         console.log(response);
+        console.log('se ha enviado?');
         if (response.data.text) {
           this.$router.push('/');
         } else {
